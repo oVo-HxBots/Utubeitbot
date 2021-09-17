@@ -22,8 +22,9 @@ url = auth.GetAuthUrl()
 async def _login(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
     await m.reply_text(
-        text=tr.LOGIN_MSG[1],
+        text=tr.LOGIN_MSG,
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Authentication URL", url=url)]]
-    )
+     )
+)
 
