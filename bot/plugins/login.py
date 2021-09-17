@@ -14,7 +14,7 @@ from ..utubebot import UtubeBot
 auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
 url = auth.GetAuthUrl()
 
-@UtubeBot.on_message
+@UtubeBot.on_message(
     Filters.private
     & Filters.incoming
     & Filters.command("login")
