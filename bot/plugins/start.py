@@ -16,8 +16,7 @@ async def _start(c: UtubeBot, m: Message):
     await m.reply_text(
         text=tr.START_MSG.format(m.from_user.first_name),
         quote=True,
-        reply_markup=InlineKeyboardMarkup(
-             [
+        reply_markup=InlineKeyboardMarkup([
                   [
                       [InlineKeyboardButton("How To Use Me🙄", callback_data="help")]
                   ],
@@ -27,7 +26,6 @@ async def _start(c: UtubeBot, m: Message):
                   ],
                   [  
                       [InlineKeyboardButton("Buy Me A Tea", url="https://upayme.vercel.app/kkirodewal@ybl")]
-                  ]
-             ]
+                  ]]
         ),
     )
