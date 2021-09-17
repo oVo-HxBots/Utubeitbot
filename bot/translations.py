@@ -38,8 +38,10 @@ class Messages:
         "writing Telegram Bots.",
     ]
 
-    LOGIN_MSG = "**__Ohoo You Want To Login. Great 💚.__**"
-                "**__You need to give me the access to upload videos to your Youtube account.\n\nFor that open the given button below and allow access and copy the code. Come back here and send your code in this formate:\n /authorise your_code (eg: 4/4waa...).__**"
+    LOGIN_MSG = (
+          "**__Ohoo You Want To Login. Great 💚.__**"
+          "**__You need to give me the access to upload videos to your Youtube account.\n\nFor that open the given button below and allow access and copy the code. Come back here and send your code in this formate:\n /authorise your_code (eg: 4/4waa...).__**"
+    )
 
     NOT_A_REPLY_MSG = "Please reply to some video file."
 
