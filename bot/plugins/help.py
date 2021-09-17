@@ -19,7 +19,7 @@ def map_btns(pos):
         auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
         url = auth.GetAuthUrl()
         button = [
-            [InlineKeyboardButton(text="<--", =f"help+{pos-1}")],
+            [InlineKeyboardButton(text="<--", callback_data=f"help+{pos-1}")],
             [InlineKeyboardButton(text="Login", callback_data="login")],
         ]
     else:
