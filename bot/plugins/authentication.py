@@ -16,7 +16,6 @@ log = logging.getLogger(__name__)
     Filters.private
     & Filters.incoming
     & Filters.command("authorise")
-    & Filters.user(Config.AUTH_USERS)
 )
 async def _auth(c: UtubeBot, m: Message) -> None:
     if len(m.command) == 1:
@@ -42,7 +41,7 @@ async def _auth(c: UtubeBot, m: Message) -> None:
         msg2 = await msg.reply_text(cred_data, parse_mode=None)
         await msg2.reply_text(
             "This is your authorisation data! Save this for later use. Reply /save_auth_data to the authorisation "
-            "data to re authorise later. (helpful if you use Heroku)",
+            "data to re authorise later.",
             True,
         )
 
@@ -56,7 +55,6 @@ async def _auth(c: UtubeBot, m: Message) -> None:
     & Filters.incoming
     & Filters.command("save_auth_data")
     & Filters.reply
-    & Filters.user(Config.AUTH_USERS)
 )
 async def _save_auth_data(c: UtubeBot, m: Message) -> None:
     auth_data = m.reply_to_message.text
