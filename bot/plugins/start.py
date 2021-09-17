@@ -19,7 +19,7 @@ async def _start(c: UtubeBot, m: Message):
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup([
                   [
-                      InlineKeyboardButton("How To Use Me🙄", callback_data="help")
+                      InlineKeyboardButton("How To Use Me🙄", callback_data="/help")
                   ],
                   [
                       InlineKeyboardButton("Project Channel!", url="https://t.me/hxbots"),
