@@ -16,6 +16,7 @@ async def _start(c: UtubeBot, m: Message):
     await m.reply_text(
         text=tr.START_MSG.format(m.from_user.first_name),
         quote=True,
+        disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup([
                   [
                       InlineKeyboardButton("How To Use Me🙄", callback_data="help")
