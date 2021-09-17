@@ -4,9 +4,9 @@ class Messages:
         "**__Hi there {}.\n\nI'm Youtube Uploader Bot.You can use me to upload any telegram video to youtubeonce you authorise me.__** "
         "**__once you authorise me.You can know more from /help.\n\nThank you.**__"
         "\n**__HOW TO USE ME:-\n Watch On YouTube: [Click Here](https://youtu.be/dLCXse6HlaE)__**"
-        "**__Watch On Google Drive: [Click Here.](https://drive.google.com/file/d/12qp4VcvBOVwhMIx0O5CtO5VvUbCDeFKs/view)__**"
+        "\n **__Watch On Google Drive: [Click Here.](https://drive.google.com/file/d/12qp4VcvBOVwhMIx0O5CtO5VvUbCDeFKs/view)__**"
         "\n**__You can know more from /help.__**"
-        "**__Or use /login to get started.__**"
+        "\n**__Or use /login to get started.__**"
         "\n**__Join @HXBots for More Bots...__**"
     )
 
