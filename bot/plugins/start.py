@@ -10,7 +10,6 @@ from ..utubebot import UtubeBot
     Filters.private
     & Filters.incoming
     & Filters.command("start")
-    & Filters.user(Config.AUTH_USERS)
 )
 async def _start(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
@@ -19,6 +18,15 @@ async def _start(c: UtubeBot, m: Message):
         text=tr.START_MSG.format(m.from_user.first_name),
         quote=True,
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("Join Project Channel!", url="https://t.me/odbots")]]
+            [
+               [InlineKeyboardButton("How To Use Me🙄", callback_data="help")]
+            ],
+            [
+               [InlineKeyboardButton("Project Channel!", url="https://t.me/hxbots")],
+               [InlineKeyboardButton("Support Group", url="https://t.me/HxSupport")]
+            ],
+            [  
+               [InlineKeyboardButton("Buy Me A Tea", url="https://upayme.vercel.app/kkirodewal@ybl")]
+            ]
         ),
     )
