@@ -20,7 +20,7 @@ def map_btns(pos):
         url = auth.GetAuthUrl()
         button = [
             [InlineKeyboardButton(text="<--", callback_data=f"help+{pos-1}")],
-            [InlineKeyboardButton(text="Login", url="url")],
+            [InlineKeyboardButton(text="Login URL", url="url")],
         ]
     else:
         button = [
