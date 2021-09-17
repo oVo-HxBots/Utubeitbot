@@ -5,9 +5,9 @@ class Messages:
         "**__once you authorise me.You can know more from /help.\n\nThank you.**__"
         "\n**__HOW TO USE ME:-\n Watch On YouTube: [Click Here](https://youtu.be/dLCXse6HlaE)__**"
         "\n **__Watch On Google Drive: [Click Here.](https://drive.google.com/file/d/12qp4VcvBOVwhMIx0O5CtO5VvUbCDeFKs/view)__**"
-        "\n**__You can know more from /help.__**"
+        "\n\n**__You can know more from /help.__**"
         "\n**__Or use /login to get started.__**"
-        "\n**__Join @HXBots for More Bots...__**"
+        "\n\n**__Join @HXBots for More Bots...__**"
     )
 
     HELP_MSG = [
@@ -40,7 +40,7 @@ class Messages:
 
     LOGIN_MSG = (
           "**__Ohoo You Want To Login. Great 💚.__**"
-          "**__You need to give me the access to upload videos to your Youtube account.\n\nFor that open the given button below and allow access and copy the code. Come back here and send your code in this formate:\n /authorise your_code (eg: 4/4waa...).__**"
+          "\n\n**__You need to give me the access to upload videos to your Youtube account.\n\nFor that open the given button below and allow access and copy the code. Come back here and send your code in this formate:\n /authorise your_code (eg: 4/4waa...).__**"
     )
 
     NOT_A_REPLY_MSG = "Please reply to some video file."
