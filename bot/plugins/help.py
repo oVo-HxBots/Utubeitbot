@@ -57,3 +57,21 @@ async def help_answer(c: UtubeBot, q: CallbackQuery):
     await q.edit_message_text(
         text=tr.HELP_MSG[pos], reply_markup=InlineKeyboardMarkup(map_btns(pos))
     )
+
+
+auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
+url = auth.GetAuthUrl()
+
+@UtubeBot.on_message(
+    Filters.private
+    & Filters.incoming
+    & Filters.command("login")
+)
+async def _login(c: UtubeBot, m: Message):
+    await m.reply_chat_action("typing")
+    await m.reply_text(
+        text=tr.LOGIN_MSG,
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton(text="Authentication URL", url=url)]]
+     )
+)
