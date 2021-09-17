@@ -1,8 +1,13 @@
 class Messages:
 
     START_MSG = (
-        "Hi there {}.\n\nI'm Youtube Uploader Bot.You can use me to upload any telegram video to youtube "
+        "Hi there {}.\n\nI'm Youtube Uploader Bot.You can use me to upload any telegram video to youtubeonce you authorise me. "
         "once you authorise me.You can know more from /help.\n\nThank you."
+        "HOW TO USE ME:-\n Watch On YouTube: [Click Here](https://youtu.be/dLCXse6HlaE)"
+        "Watch On Google Drive: [Click Here.](https://drive.google.com/file/d/12qp4VcvBOVwhMIx0O5CtO5VvUbCDeFKs/view)"
+        "\nYou can know more from /help."
+        "Or use /login to get started."
+        "\n Join @HXBots for More Bots..."
     )
 
     HELP_MSG = [
