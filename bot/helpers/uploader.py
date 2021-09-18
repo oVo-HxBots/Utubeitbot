@@ -95,8 +95,8 @@ class Uploader:
             video_id = r["id"]
             self.status = True
             self.message = (
-                f"Title: {title}\n\n Link: https://youtu.be/{video_id}"
-                f"{categoryId} ({categoryName})"
+                f"Title: {title}\n Link: https://youtu.be/{video_id}"
+                f"\n\nCategory ID: {categoryName} | Category Code: {categoryId}\n**@HxBots | [@oVo-HxBots](https://github.com/oVo-HxBots)**"
             )
         except Exception as e:
             log.error(e, exc_info=True)
