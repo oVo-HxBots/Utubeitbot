@@ -3,7 +3,7 @@ import os
 
 class Config:
 
-    BOT_TOKEN = "1173368697:AAFoGkm-dObbHkzomWfVMVkHY8pn56eEWxw"
+    BOT_TOKEN = "5307023807:AAGC4RrmPUkIUc3_97avWP3t5yCy9C7XOAI"
 
     SESSION_NAME = os.environ.get("SESSION_NAME", "Utubeitbot")
 
@@ -11,9 +11,9 @@ class Config:
 
     API_HASH = "e743e5a4f35076e4c558a4bd713082e9"
 
-    CLIENT_ID = "930430022879-pmkofefd6jum7o6vp5g6gd04bfgcp5mk.apps.googleusercontent.com"
+    CLIENT_ID = "930430022879-53u3i9b1ktcqo97ljc0bfvqu8la897uc.apps.googleusercontent.com"
 
-    CLIENT_SECRET = "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"
+    CLIENT_SECRET = "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"
 
     BOT_OWNER = "754495556"
 
