@@ -3,4 +3,5 @@ tgcrypto
 httplib2==0.19.1
 oauth2client==4.1.3
 google-api-python-client
-asyncio
+google-auth-oauthlib
+google-auth-httplib2
