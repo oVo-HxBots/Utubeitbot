@@ -11,6 +11,7 @@ class UtubeBot(Client):
             api_hash=Config.API_HASH,
             plugins=dict(root="bot.plugins"),
             workers=6,
+            session_name=Config.SESSION_NAME
         )
         self.DOWNLOAD_WORKERS = 6
         self.counter = 0
