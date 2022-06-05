@@ -2,7 +2,7 @@
   "name": "Youtube Upload Bot",
   "description": "Telegram to YouTube Uploader Bot",
   "repository": "https://github.com/oVo-HxBots/Utubeitbot",
-  "logo": "https://github.com/oVo-HxBots/Utubeitbot/blob/master/ss/logo.png",
+  "logo": "https://github.com/oVo-HxBots/Utubeitbot/blob/master/ss/logo.jpeg",
   "keywords": ["telegram", "youtube", "uploader"],
   "env": {
       "BOT_TOKEN": {
