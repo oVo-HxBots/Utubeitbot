@@ -70,7 +70,6 @@ url = auth.GetAuthUrl()
     & Filters.user(Config.AUTH_USERS)
 )
 async def _login(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
 
     await m.reply_text(
         text=tr.LOGIN_MSG,
