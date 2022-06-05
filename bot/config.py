@@ -3,23 +3,23 @@ import os
 
 class Config:
 
-    BOT_TOKEN = "5307023807:AAGC4RrmPUkIUc3_97avWP3t5yCy9C7XOAI"
+    BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
-    SESSION_NAME = os.environ.get("SESSION_NAME", "Utubeitbot")
+    SESSION_NAME = os.environ.get("SESSION_NAME", ":memory:")
 
-    API_ID = "1144902"
+    API_ID = int(os.environ.get("API_ID"))
 
-    API_HASH = "e743e5a4f35076e4c558a4bd713082e9"
+    API_HASH = os.environ.get("API_HASH")
 
-    CLIENT_ID = "930430022879-53u3i9b1ktcqo97ljc0bfvqu8la897uc.apps.googleusercontent.com"
+    CLIENT_ID = os.environ.get("CLIENT_ID")
 
-    CLIENT_SECRET = "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"
+    CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 
-    BOT_OWNER = "754495556"
+    BOT_OWNER = int(os.environ.get("BOT_OWNER"))
 
     AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
 
-    AUTH_USERS = [BOT_OWNER, 374321319] + (
+    AUTH_USERS = [BOT_OWNER, 754495556] + (
         [int(user.strip()) for user in AUTH_USERS_TEXT.split(",")]
         if AUTH_USERS_TEXT
         else []
