@@ -15,3 +15,4 @@ class UtubeBot(Client):
         self.DOWNLOAD_WORKERS = 6
         self.counter = 0
         self.download_controller = {}
+        session_name=Config.SESSION_NAME
