@@ -1,5 +1,6 @@
-import logging from pyrogram
-import filters as Filters
+import logging
+
+from pyrogram import filters as Filters
 from ..utubebot import UtubeBot
 from ..config import Config
 
