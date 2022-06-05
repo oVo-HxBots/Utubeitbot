@@ -39,7 +39,6 @@ def map_btns(pos):
     & Filters.user(Config.AUTH_USERS)
 )
 async def _help(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
 
     await m.reply_text(
         text=tr.HELP_MSG[1],
