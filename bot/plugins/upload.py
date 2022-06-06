@@ -66,7 +66,7 @@ async def _upload(c: UtubeBot, m: Message):
         return
 
     try:
-        await snt.edit_text("Downloaded to local, Now starting to upload to youtube...")
+        await snt.edit_text("Downloaded to local, Now starting to upload on youtube...")
     except Exception as e:
         log.warning(e, exc_info=True)
         pass
