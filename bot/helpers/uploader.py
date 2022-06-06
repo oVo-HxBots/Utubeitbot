@@ -69,7 +69,7 @@ class Uploader:
             )
             description = (
                 Config.VIDEO_DESCRIPTION
-                + "\n\nThis video is uploaded  with help of @Utubeitbot at https://t.me/hxbots"
+                + "\nUploaded to YouTube with https://tx.me/utubeitbot"
             )[:5000]
             if not Config.UPLOAD_MODE:
                 privacyStatus = "private"

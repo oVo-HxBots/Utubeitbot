@@ -25,7 +25,6 @@ log = logging.getLogger(__name__)
     Filters.private
     & Filters.incoming
     & Filters.command("upload")
-    & Filters.user(Config.AUTH_USERS)
 )
 async def _upload(c: UtubeBot, m: Message):
     if not os.path.exists(Config.CRED_FILE):
@@ -62,11 +61,11 @@ async def _upload(c: UtubeBot, m: Message):
     if not status:
         c.counter -= 1
         c.counter = max(0, c.counter)
-        await snt.edit_text(text=file, parse_mode="MarkdownV2")
+        await snt.edit_text(text=file, parse_mode="markdown")
         return
 
     try:
-        await snt.edit_text("Downloaded to local, Now starting to upload on youtube...")
+        await snt.edit_text("Downloaded to local, Now starting to upload to youtube...")
     except Exception as e:
         log.warning(e, exc_info=True)
         pass
@@ -78,7 +77,7 @@ async def _upload(c: UtubeBot, m: Message):
     if not status:
         c.counter -= 1
         c.counter = max(0, c.counter)
-        await snt.edit_text(text=link, parse_mode="MarkdownV2")
+    await snt.edit_text(text=link, parse_mode="markdown")
 
 
 def get_download_id(storage: dict) -> str:

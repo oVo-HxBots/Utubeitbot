@@ -1,8 +1,8 @@
 {
   "name": "Youtube Upload Bot",
   "description": "Telegram to YouTube Uploader Bot",
-  "repository": "https://github.com/oVo-HxBots/Utubeitbot",
-  "logo": "https://telegra.ph/file/9aabca96408cfb5a1227f.jpg",
+  "repository": "https://github.com/odysseusmax/utube",
+  "logo": "https://github.com/odysseusmax/utube/blob/master/ss/logo.jpeg",
   "keywords": ["telegram", "youtube", "uploader"],
   "env": {
       "BOT_TOKEN": {
