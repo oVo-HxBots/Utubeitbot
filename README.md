@@ -14,6 +14,8 @@
 - [Contact](#contact)
 - [License](#license)
 
+## How To Deploy; [See Video Here](https://youtu.be/JltFDW5X4Y0)
+
 ### Info
 
 This is a simple hobby project which I was really curious about to implement. This is a Telegram bot which uses [Youtube Data API v3](https://developers.google.com/youtube/v3/ "Youtube Data API v3") to upload videos to Youtube.
