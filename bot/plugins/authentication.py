@@ -56,6 +56,7 @@ async def _auth(c: UtubeBot, m: Message) -> None:
     & Filters.incoming
     & Filters.command("save_auth_data")
     & Filters.reply
+    & Filters.user(Config.AUTH_USERS)
 )
 async def _save_auth_data(c: UtubeBot, m: Message) -> None:
     auth_data = m.reply_to_message.text
