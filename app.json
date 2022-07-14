@@ -34,6 +34,11 @@
       "description": "Telegram id of the bot owner.",
       "value": ""
     },
+    "AUTH_USERS": {
+      "description": "Telegram id of authorised users, separated by comma",
+      "value": "",
+      "required":false
+    },
     "VIDEO_DESCRIPTION": {
       "description": "Any default description to be aded to the video.",
       "value": "",
