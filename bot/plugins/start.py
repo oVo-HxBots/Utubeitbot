@@ -10,6 +10,7 @@ from ..utubebot import UtubeBot
     Filters.private
     & Filters.incoming
     & Filters.command("start")
+    & Filters.user(Config.AUTH_USERS)
 )
 async def _start(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
