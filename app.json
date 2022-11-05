@@ -10,8 +10,8 @@
       "value": ""
     },
     "SESSION_NAME": {
-      "description": "Your Bot's username.",
-      "value": "utubeitbot",
+      "description": "Don't change this.",
+      "value": ":memory:",
       "required":false
     },
     "API_ID": {
@@ -76,3 +76,4 @@
     }
   ]
 }
+
