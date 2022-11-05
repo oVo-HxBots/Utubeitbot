@@ -93,6 +93,7 @@ If you did everything correctly, the bot should be running. Go do `/start` to se
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 #### Koyeb
+<p align="center">
 <img  width="25%" height="25%" src="./ss/koyeb1.jpg">
 <img  width="25%" height="25%" src="./ss/koyeb2.jpg">
 
