@@ -3,7 +3,8 @@
 ![Repo Size](https://img.shields.io/github/repo-size/oVo-HxBots/Utubeitbot?&style=flat-square&logo=github)
 [![GitHub stars](https://img.shields.io/github/stars/oVo-HxBots/Utubeitbot?&style=flat-square&logo=github)](https://github.com/oVo-HxBots/Utubeitbot/stargazers)
 
-# [Now Support Koyeb](app.koyeb.com)
+#### [Render Support Added](#render)
+#### ~~[Koyeb Support Discontinued](#koyeb)~~
 
 > Simple [Telegram Bot](https://core.telegram.org/bots "Telegram Bots") to Upload videos to [Youtube](https://youtube.com "YouTube") written in Python3.
 
@@ -12,8 +13,9 @@
 - [Info](#info)
 - [Libraries Used](#libraries-used)
 - [Setup](#setup)
- - [Heroku](#heroku)
- - [Koyeb](#koyeb)
+- [Heroku](#heroku)
+- [Render](#render)
+- [Koyeb](#koyeb)
 - [Status](#status)
 - [Special Notes](#special-notes)
 - [Screenshots](#screenshots)
@@ -94,6 +96,16 @@ If you did everything correctly, the bot should be running. Go do `/start` to se
 **Or the easy way of directly deploying to heroku**
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+#### Render
+<img  width="25%" height="25%" src="./ss/render1.jpg">
+<img  width="25%" height="25%" src="./ss/render2.jpg">
+
+[See more on our blog with youtube video](https://hxbots.eu.org/2022/12/deploy-youtube-uploader-bot-on-render/)
+
+**the easy way of directly deploying on render**
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/oVo-HxBots/Utubeitbot)
 
 #### Koyeb
 <p align="center">
