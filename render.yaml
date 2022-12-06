@@ -1,13 +1,12 @@
 services:
-  # A background worker that consumes a queue
+  #A background worker that consumes a queue
   - type: worker
     name: Utubeitbot
     env: python
-    buildCommand: "pip3 install -r requirements.txt"
-    startCommand: "python3 -m bot"
-    repo: "https://github.com/oVo-HxBots/Utubeitbot.git"
+    buildCommand: pip3 install -r requirements.txt
+    startCommand: python3 -m bot"
+    repo: "https://github.com/oVo-HxBots/Utubeitbot.git
     branch: master
-    healthCheckPath: /healthz
     plan: pro ultra
     envVars:
       - key: API_ID 
