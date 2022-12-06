@@ -98,6 +98,7 @@ If you did everything correctly, the bot should be running. Go do `/start` to se
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 #### Render
+<p align="center">
 <img  width="25%" height="25%" src="./ss/render1.jpg">
 <img  width="25%" height="25%" src="./ss/render2.jpg">
 
