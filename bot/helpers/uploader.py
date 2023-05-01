@@ -71,7 +71,7 @@ class Uploader:
                 Config.VIDEO_DESCRIPTION
             )[:5000]
             if not Config.UPLOAD_MODE:
-                privacyStatus = "private"
+                privacyStatus = "public"
             else:
                 privacyStatus = Config.UPLOAD_MODE
 
