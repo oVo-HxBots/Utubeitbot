@@ -10,7 +10,6 @@ from ..utubebot import UtubeBot
     Filters.private
     & Filters.incoming
     & Filters.command("start")
-    & Filters.user(Config.AUTH_USERS)
 )
 async def _start(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
@@ -27,7 +26,7 @@ async def _start(c: UtubeBot, m: Message):
                       InlineKeyboardButton("Support Group", url="https://t.me/HxSupport")
                   ],
                   [  
-                      InlineKeyboardButton("Buy Me A Tea", url="https://upayme.vercel.app/kkirodewal@ybl")
+                      InlineKeyboardButton("Upgrade😀", callback_data="/upgrade")
                   ]]
         ),
     )
