@@ -77,3 +77,23 @@ async def _login(c: UtubeBot, m: Message):
             [[InlineKeyboardButton(text="Authentication URL", url=url)]]
      )
 )
+
+@UtubeBot.on_message(
+
+    Filters.private
+
+    & Filters.incoming
+
+    & Filters.command("upgrade")
+
+)
+
+async def _upgrade(c: UtubeBot, m: Message):
+    await m.reply_chat_action("typing")
+    await m.reply_text(
+        text=tr.UPGRADE_MSG,
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton(text="Subscription Details", url="https://t.me/+97tA4_TrzyowMjk1")]]
+     )
+)
