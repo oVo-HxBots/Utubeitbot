@@ -46,6 +46,7 @@ class Messages:
     )
 
     UPGRADE_MSG = "**__For Purchase Contact @Kirodewal or Click Below Link---\nhttps://t.me/+97tA4_TrzyowMjk1**"
+    
     NOT_A_REPLY_MSG = "Please reply to some video file."
 
     NOT_A_MEDIA_MSG = "No media file found. " + NOT_A_REPLY_MSG
