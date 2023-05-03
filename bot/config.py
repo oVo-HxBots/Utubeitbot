@@ -20,7 +20,6 @@ class Config:
     AUTH_USERS_TEXT = ""
 
     AUTH_USERS = ""
-    )
 
     VIDEO_DESCRIPTION = (
         os.environ.get("VIDEO_DESCRIPTION", "").replace("<", "").replace(">", "")
