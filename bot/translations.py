@@ -45,6 +45,7 @@ class Messages:
           "\n\n**__You need to give me the access to upload videos to your Youtube account.\n\nFor that open the given button below and allow access and copy the code. Come back here and send your code in this formate:\n /authorise your_code (eg: 4/4waa...).__**"
     )
 
+    UPGRADE_MSG = "**__For Purchase Contact @Kirodewal or Click Below Link---\nhttps://t.me/+97tA4_TrzyowMjk1**"
     NOT_A_REPLY_MSG = "Please reply to some video file."
 
     NOT_A_MEDIA_MSG = "No media file found. " + NOT_A_REPLY_MSG
