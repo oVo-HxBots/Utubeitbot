@@ -27,7 +27,7 @@ async def _start(c: UtubeBot, m: Message):
                       InlineKeyboardButton("Support Group", url="https://t.me/HxSupport")
                   ],
                   [  
-                      InlineKeyboardButton("Buy Me A Tea", url="https://upayme.vercel.app/kkirodewal@ybl")
+                      InlineKeyboardButton("Upgrade😀", url="https://t.me/+97tA4_TrzyowMjk1")
                   ]]
         ),
     )
