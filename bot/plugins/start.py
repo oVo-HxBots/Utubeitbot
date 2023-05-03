@@ -26,7 +26,7 @@ async def _start(c: UtubeBot, m: Message):
                       InlineKeyboardButton("Support Group", url="https://t.me/HxSupport")
                   ],
                   [  
-                      InlineKeyboardButton("Upgrade😀", callback_data="/help")
+                      InlineKeyboardButton("Upgrade😀", url="https://google.com")
                   ]]
         ),
     )
