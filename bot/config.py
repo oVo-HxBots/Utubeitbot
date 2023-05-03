@@ -19,10 +19,7 @@ class Config:
 
     AUTH_USERS_TEXT = ""
 
-    AUTH_USERS = [BOT_OWNER, 754495556] + (
-        [int(user.strip()) for user in AUTH_USERS_TEXT.split(",")]
-        if AUTH_USERS_TEXT
-        else []
+    AUTH_USERS = ""
     )
 
     VIDEO_DESCRIPTION = (
