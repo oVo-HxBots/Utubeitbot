@@ -15,11 +15,15 @@ class Config:
 
     CLIENT_SECRET = "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"
 
-    BOT_OWNER = 754495556
+    BOT_OWNER = "754495556"
 
-    AUTH_USERS_TEXT = ""
-
-    AUTH_USERS = ""
+    AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
+    
+    AUTH_USERS = [BOT_OWNER, 754495556] + (
+        [int(user.strip()) for user in AUTH_USERS_TEXT.split(",")]
+        if AUTH_USERS_TEXT
+        else []
+    )
 
     VIDEO_DESCRIPTION = (
         os.environ.get("VIDEO_DESCRIPTION", "").replace("<", "").replace(">", "")
