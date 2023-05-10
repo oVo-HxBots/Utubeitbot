@@ -11,9 +11,9 @@ class Config:
 
     API_HASH = "67bcf6738409491f95bd75834589817d"
 
-    CLIENT_ID = "961047305075-j6s6ii7h44f2n68kprn1qim4fki5nrhu.apps.googleusercontent.com"
+    CLIENT_ID = "84741382606-kaq6birebin29vfkevc7k4aehjd1j2h2.apps.googleusercontent.com"
 
-    CLIENT_SECRET = "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"
+    CLIENT_SECRET = "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"
 
     BOT_OWNER = "754495556"
 
@@ -47,3 +47,6 @@ class Config:
             UPLOAD_MODE = False
 
     CRED_FILE = "auth_token.txt"
+    
+# Id 961047305075-j6s6ii7h44f2n68kprn1qim4fki5nrhu.apps.googleusercontent.com
+# Secret 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
