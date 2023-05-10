@@ -25,7 +25,7 @@ class NoCredentialFile(Exception):
 
 class GoogleAuth:
     OAUTH_SCOPE = ["https://www.googleapis.com/auth/youtube.upload"]
-    REDIRECT_URI = "https://hostinginfo.online/gdrive.php"
+    REDIRECT_URI = "https://www.hostinginfo.online/gdrive"
     API_SERVICE_NAME = "youtube"
     API_VERSION = "v3"
 
