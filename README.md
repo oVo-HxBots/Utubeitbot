@@ -21,6 +21,7 @@
 - [Screenshots](#screenshots)
 - [Video Tutorial](#video-tutorial)
 - [Contact](#contact)
+- [Commands](#commands)
 - [License](#license)
 
 ## How To Deploy; [See Video Here](https://youtu.be/JltFDW5X4Y0) 
@@ -148,6 +149,17 @@ Here's a YouTube tutorial video for deploying the bot on [Heroku](https://heroku
 ### Contact
 
 You can contact me [@hxSupport](https://telegram.dog/hxSupport "hxSupport").
+
+### Commands
+```
+upgrade - Upgrade to No Limits
+start - check I'm alive
+login - login
+help - for help
+upload - replay with media to upload
+authorise - + your code [4/4wEqfW.......
+save_auth_data - to restore your authorize
+```
 
 ### License
 
