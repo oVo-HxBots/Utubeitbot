@@ -3,17 +3,17 @@ import os
 
 class Config:
 
-    BOT_TOKEN = "1173368697:AAFSWojI3QrNEFlgnDU4aRxS2Buk31yMekE"
+    BOT_TOKEN = "1173368697:AAEOETJROlE0PGE5HXK_UZKZCy_WSPaXYvo"
 
     SESSION_NAME = ":memory:"
 
-    API_ID = 3105621
+    API_ID = 2532603
 
-    API_HASH = "67bcf6738409491f95bd75834589817d"
+    API_HASH = "f565b00bbe3ad9c6748e39a3a71d16e7"
 
-    CLIENT_ID = "84741382606-nl17sl25k800vj27vil35a27f85sq8bb.apps.googleusercontent.com"
+    CLIENT_ID = "994789394891-h1hjc1mc8dairn9ch4usneat6r0f8b5q.apps.googleusercontent.com"
 
-    CLIENT_SECRET = "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-"
+    CLIENT_SECRET = "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"
 
     BOT_OWNER = "754495556"
 
