@@ -4,7 +4,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from ..translations import Messages as tr
 from ..config import Config
 from ..utubebot import UtubeBot
-
+from helper.database import db
 
 @UtubeBot.on_message(
     Filters.private
@@ -14,6 +14,9 @@ from ..utubebot import UtubeBot
 )
 async def _start(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
+    user = message.from_user
+    if not await db.is_user_exist(user.id):
+        await db.add_user(user.id)
     await m.reply_text(
         text=tr.START_MSG.format(m.from_user.first_name),
         quote=True,
