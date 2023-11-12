@@ -4,7 +4,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/oVo-HxBots/Utubeitbot?&style=flat-square&logo=github)](https://github.com/oVo-HxBots/Utubeitbot/stargazers)
 
 #### [Render Support Added](#render)
-#### ~~[Koyeb Support Discontinued](#koyeb)~~
+#### [Koyeb Support Added](#koyeb)
 
 > Simple [Telegram Bot](https://core.telegram.org/bots "Telegram Bots") to Upload videos to [Youtube](https://youtube.com "YouTube") written in Python3.
 
