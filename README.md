@@ -114,6 +114,7 @@ If you did everything correctly, the bot should be running. Go do `/start` to se
 <img  width="25%" height="25%" src="./ss/koyeb1.jpg">
 <img  width="25%" height="25%" src="./ss/koyeb2.jpg">
 
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/oVo-HxBots&branch=master&name=Utubeitbot&service_type=worker&run_command=python3%20-m%20bot)
 ### Development Status
 
 This project is actively maintained and will continue so until I'm tired of it.
