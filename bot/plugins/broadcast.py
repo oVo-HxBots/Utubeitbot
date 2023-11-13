@@ -20,7 +20,7 @@ logger.setLevel(logging.INFO)
     & Filters.command("users")
     & Filters.user(Config.BOT_OWNER)
 )
-async def get_stats(c: Utubeitbot, m: Message):
+async def get_stats(c: UtubeBot, m: Message):
     text = await message.reply('**𝙰𝙲𝙲𝙴𝚂𝚂𝙸𝙽𝙶 𝙳𝙴𝚃𝙰𝙸𝙻𝚂.....**')
     total_users = await db.total_users_count()
     await mr.edit( text=f"❤️‍🔥 TOTAL USER'S = `{total_users}`")
@@ -32,7 +32,7 @@ async def get_stats(c: Utubeitbot, m: Message):
     & Filters.user(Config.BOT_OWNER)
     & filters.reply
 )
-async def broadcast_handler(c: Utubeitbot, m: Message):
+async def broadcast_handler(c: UtubeBot, m: Message):
     all_users = await db.get_all_users()
     broadcast_msg = m.reply_to_message
     sts_msg = await m.reply_text("broadcast started !") 
