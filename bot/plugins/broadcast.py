@@ -21,9 +21,11 @@ logger.setLevel(logging.INFO)
     & Filters.user(Config.BOT_OWNER)
 )
 async def get_stats(c: UtubeBot, m: Message):
-    text = await m.reply('**𝙰𝙲𝙲𝙴𝚂𝚂𝙸𝙽𝙶 𝙳𝙴𝚃𝙰𝙸𝙻𝚂.....**')
+    await m.reply_text(
+     text='**𝙰𝙲𝙲𝙴𝚂𝚂𝙸𝙽𝙶 𝙳𝙴𝚃𝙰𝙸𝙻𝚂.....**'
+)
     total_users = await db.total_users_count()
-    await mr.edit( text=f"❤️‍🔥 TOTAL USER'S = `{total_users}`")
+    await m.edit( text=f"❤️‍🔥 TOTAL USER'S = `{total_users}`")
 
 @UtubeBot.on_message(
     Filters.private
