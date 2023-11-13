@@ -3,7 +3,7 @@ import time
 import asyncio 
 import logging 
 import datetime
-from .config import BOT_OWNER
+from ..config import Config
 from helper.database import db
 from pyrogram.types import Message
 from pyrogram import Client
