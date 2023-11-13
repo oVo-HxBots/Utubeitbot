@@ -4,23 +4,23 @@ class Config:
 
     id_pattern = re.compile(r'^.\d+$') 
 
-    BOT_TOKEN = os.environ.get("BOT_TOKEN")
+    BOT_TOKEN = "6898058070:AAHDHQRTWmCzSlTGn68c2itTqznRP-uhX3w"
 
     SESSION_NAME = ":memory:"
 
-    API_ID = int(os.environ.get("API_ID"))
+    API_ID = 2532603
 
-    API_HASH = os.environ.get("API_HASH")
+    API_HASH = "f565b00bbe3ad9c6748e39a3a71d16e7"
 
-    CLIENT_ID = os.environ.get("CLIENT_ID")
+    CLIENT_ID = "84741382606-nl17sl25k800vj27vil35a27f85sq8bb.apps.googleusercontent.com"
 
-    CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
+    CLIENT_SECRET = "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"
 
-    DB_NAME = os.environ.get("DB_NAME","")     
+    DB_NAME = "utubeitbot"    
 
-    DB_URL = os.environ.get("DB_URL","")
+    DB_URL = "mongodb+srv://user:user@cluster0.x3e1p.mongodb.net"
 
-    BOT_OWNER = int(os.environ.get("BOT_OWNER"))
+    BOT_OWNER = "754495556"
 
     AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
 
