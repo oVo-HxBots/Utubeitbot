@@ -30,7 +30,7 @@ async def get_stats(c: UtubeBot, m: Message):
     & Filters.incoming
     & Filters.command("broadcast")
     & Filters.user(Config.BOT_OWNER)
-    & filters.reply
+    & Filters.reply
 )
 async def broadcast_handler(c: UtubeBot, m: Message):
     all_users = await db.get_all_users()
