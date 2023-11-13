@@ -8,9 +8,9 @@ class Config:
 
     SESSION_NAME = ":memory:"
 
-    API_ID = 2532603
+    API_ID = 924859
 
-    API_HASH = "f565b00bbe3ad9c6748e39a3a71d16e7"
+    API_HASH = "a4c9a18cf4d8cb24062ff6916597f832"
 
     CLIENT_ID = "84741382606-nl17sl25k800vj27vil35a27f85sq8bb.apps.googleusercontent.com"
 
