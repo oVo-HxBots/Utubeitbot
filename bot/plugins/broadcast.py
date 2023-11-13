@@ -9,6 +9,7 @@ from pyrogram.types import Message
 from pyrogram import Client
 from pyrogram import filters as Filters
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
+from ..utubebot import UtubeBot
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
