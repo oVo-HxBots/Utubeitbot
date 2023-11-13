@@ -1,7 +1,8 @@
-import os
-
+import re, os
 
 class Config:
+
+    id_pattern = re.compile(r'^.\d+$') 
 
     BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
@@ -14,6 +15,10 @@ class Config:
     CLIENT_ID = os.environ.get("CLIENT_ID")
 
     CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
+
+    DB_NAME = os.environ.get("DB_NAME","")     
+
+    DB_URL = os.environ.get("DB_URL","")
 
     BOT_OWNER = int(os.environ.get("BOT_OWNER"))
 
