@@ -4,7 +4,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from ..translations import Messages as tr
 from ..config import Config
 from ..utubebot import UtubeBot
-from helper.database import db
+from ..helpers.database import db
 
 @UtubeBot.on_message(
     Filters.private
