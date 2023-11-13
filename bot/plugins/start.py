@@ -14,7 +14,7 @@ from ..helpers.database import db
 )
 async def _start(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
-    user = message.from_user
+    user = m.from_user
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id)
     await m.reply_text(
