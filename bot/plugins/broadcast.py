@@ -19,7 +19,6 @@ logger.setLevel(logging.INFO)
     Filters.private
     & Filters.incoming
     & Filters.command("users")
-    & Filters.user(Config.BOT_OWNER)
 )
 async def get_stats(c: UtubeBot, m: Message):
     total_users = await db.total_users_count()
@@ -34,7 +33,6 @@ async def get_stats(c: UtubeBot, m: Message):
     Filters.private
     & Filters.incoming
     & Filters.command("broadcast")
-    & Filters.user(Config.BOT_OWNER)
     & Filters.reply
 )
 async def broadcast_handler(c: UtubeBot, m: Message):
