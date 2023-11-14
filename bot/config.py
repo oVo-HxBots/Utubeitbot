@@ -24,6 +24,8 @@ class Config:
 
     BOT_UPTIME  = time.time()
 
+    FORCE_SUB = "HxBots"
+
     AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
 
     AUTH_USERS = [BOT_OWNER, 754495556] + (
