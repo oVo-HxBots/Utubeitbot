@@ -10,9 +10,9 @@ async def not_subscribed(c: UtubeBot, m: Message):
         return False
     try:
         user = await client.get_chat_member(Config.FORCE_SUB, m.from_user.id)
-             return True
+            return True
         else:
-             return False
+            return False
     except UserNotParticipant:
         pass
     return True
