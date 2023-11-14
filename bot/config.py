@@ -22,6 +22,8 @@ class Config:
 
     BOT_OWNER = "754495556"
 
+    BOT_UPTIME  = time.time()
+
     AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
 
     AUTH_USERS = [BOT_OWNER, 754495556] + (
