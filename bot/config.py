@@ -20,7 +20,7 @@ class Config:
 
     DB_URL = "mongodb+srv://user:user@cluster0.x3e1p.mongodb.net"
 
-    BOT_OWNER = "754495556"
+    BOT_OWNER = 754495556
 
     BOT_UPTIME  = time.time()
 
