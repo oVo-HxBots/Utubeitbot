@@ -7,7 +7,12 @@ from ..helpers.database import db
 async def not_subscribed(c: UtubeBot, m: Message):
     await db.add_user(user.id)
     if not Config.FORCE_SUB:
-        return False                
+        return False
+    try:
+        user = await client.get_chat_member(Config.FORCE_SUB, m.from_user.id)
+        return True
+    else:
+        return False
     except UserNotParticipant:
         pass
     return True
@@ -18,8 +23,7 @@ async def forces_sub(c: UtubeBot, m: Message):
     buttons = [[InlineKeyboardButton(text="📢 Join Update Channel 📢", url=f"https://t.me/{Config.FORCE_SUB}") ]]
     text = "**Sᴏʀʀy Dᴜᴅᴇ Yᴏᴜ'ʀᴇ Nᴏᴛ Jᴏɪɴᴇᴅ My Cʜᴀɴɴᴇʟ 😐. Sᴏ Pʟᴇᴀꜱᴇ Jᴏɪɴ Oᴜʀ Uᴩᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ Tᴏ Cᴄᴏɴᴛɪɴᴜᴇ**"
     try:
-        user = await client.get_chat_member(Config.FORCE_SUB, m.from_user.id)    
-        if user.status == enums.ChatMemberStatus.BANNED:                                   
+        user = await client.get_chat_member(Config.FORCE_SUB, m.from_user.id)                                       
             return await client.send_message(m.from_user.id, text="Sᴏʀʀy Yᴏᴜ'ʀᴇ Bᴀɴɴᴇᴅ Tᴏ Uꜱᴇ Mᴇ")  
     except UserNotParticipant:                       
         return await m.reply_text(text=text, reply_markup=InlineKeyboardMarkup(buttons))
