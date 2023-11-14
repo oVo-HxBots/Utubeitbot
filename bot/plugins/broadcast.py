@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import asyncio 
 import logging 
@@ -20,12 +21,14 @@ logger.setLevel(logging.INFO)
     & Filters.command("users")
     & Filters.user(Config.BOT_OWNER)
 )
-async def _get_stats(c: UtubeBot, m: Message):
-    await m.reply_text(
-     text='**𝙰𝙲𝙲𝙴𝚂𝚂𝙸𝙽𝙶 𝙳𝙴𝚃𝙰𝙸𝙻𝚂.....**'
-)
+async def get_stats(c: UtubeBot, m: Message):
     total_users = await db.total_users_count()
-    await m.edit( text=f"❤️‍🔥 TOTAL USER'S = `{total_users}`")
+    uptime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - Config.BOT_UPTIME))    
+    start_t = time.time()
+    st = await message.reply('**Aᴄᴄᴇꜱꜱɪɴɢ Tʜᴇ Dᴇᴛᴀɪʟꜱ.....**')    
+    end_t = time.time()
+    time_taken_s = (end_t - start_t) * 1000
+    await st.edit(text=f"**--Bᴏᴛ Sᴛᴀᴛᴜꜱ--** \n\n**⌚️ Bᴏᴛ Uᴩᴛɪᴍᴇ:** {uptime} \n**🐌 Cᴜʀʀᴇɴᴛ Pɪɴɢ:** `{time_taken_s:.3f} ᴍꜱ` \n**👭 Tᴏᴛᴀʟ Uꜱᴇʀꜱ:** `{total_users}`")
 
 @UtubeBot.on_message(
     Filters.private
@@ -34,7 +37,7 @@ async def _get_stats(c: UtubeBot, m: Message):
     & Filters.user(Config.BOT_OWNER)
     & Filters.reply
 )
-async def _broadcast_handler(c: UtubeBot, m: Message):
+async def broadcast_handler(c: UtubeBot, m: Message):
     all_users = await db.get_all_users()
     broadcast_msg = m.reply_to_message
     sts_msg = await m.reply_text("broadcast started !") 
@@ -57,7 +60,7 @@ async def _broadcast_handler(c: UtubeBot, m: Message):
     completed_in = datetime.timedelta(seconds=int(time.time() - start_time))
     await sts_msg.edit(f"Broadcast Completed:\nCompleted in `{completed_in}`.\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nFailed: {failed}")
            
-async def _send_msg(user_id, message):
+async def send_msg(user_id, message):
     try:
         await message.copy(chat_id=int(user_id))
         return 200
