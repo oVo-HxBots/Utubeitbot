@@ -53,8 +53,11 @@ class Messages:
 
     UPDATE_MSG = [
         ".",
-        f"**         Date:16-08-2021; Monday\n\n__• Added /{BotCommands.Restart[0]} Command [Admin].__\n__• Added /{BotCommands.Log[0]} Command [Admin].__**", 
-        f"**         Date:16-05-2021; Sunday\n\n__• Added /{BotCommands.Update[0]} Command.__\n__• Added Logger Support.__**",  
+        f"**         Date:03-05-2023; Wednesday \n\n__• Created Upgrade Option, Fixed some minor bugs.__**",
+        f"**         Date:06-12-2022; Tuesday \n\n__• Added Render Support and fixes some issues.__**", 
+        f"**         Date:04-11-2022; Friday \n\n__• Updated Code to support on Koyeb.com.__**",
+        f"**         Date:14-07-2022; Thrusday \n\n__• Added Option for Private Use.__**",
+        f"**         Date:06-06-2022; Monday\n\n__• __Fixed 400 AUTH_BYTES_INVALID: The authorization bytes are invalid__, __session_name error in deployment__, unknown error about markdown__.**",  
         "**Bot Developed by [@oVo-HxBots](https://github.com/oVo-HxBots)\n Bot Owned by @HxBots**"
     ]
 
