@@ -48,9 +48,8 @@ update_callback_filter = filters.create(lambda _, __, query: query.data.startswi
 
 @UtubeBot.on_callback_query(update_callback_filter)
 async def update_answer(c: UtubeBot, q: CallbackQuery):
-    chat_id = callbackquery.from_user.id
-    message_id = callbackquery.message.message_id
-    msg = int(callbackquery.data.split('+')[1])
-    c.edit_message_text(chat_id = chat_id,    message_id = message_id,
+    pos = int(q.data.split("+")[1])
+    await q.answer()
+    await q.edit_message_text(
         text = tr.UPDATE_MSG[msg],    reply_markup = InlineKeyboardMarkup(map(msg))
     )
