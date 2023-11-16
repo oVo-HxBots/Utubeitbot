@@ -16,6 +16,8 @@ class Config:
 
     CLIENT_SECRET = "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"
 
+    DOWNLOAD_DIRECTORY = "./downloads/"
+
     DB_NAME = "utubeitbot"    
 
     DB_URL = "mongodb+srv://user:user@cluster0.x3e1p.mongodb.net"
