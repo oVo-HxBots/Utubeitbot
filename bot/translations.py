@@ -1,3 +1,9 @@
+class BotCommands:
+  Authorize = ['auth', 'authorize']
+  Update = ['update', 'up']
+  Restart = ['restart']
+  Log = ['log']
+
 class Messages:
 
     START_MSG = (
