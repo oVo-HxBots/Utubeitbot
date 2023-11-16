@@ -47,7 +47,7 @@ async def _update(c: UtubeBot, m: Message):
 update_callback_filter = filters.create(lambda _, __, query: query.data.startswith('update+'))
 
 @UtubeBot.on_callback_query(update_callback_filter)
-async def update_answer(c: UtubeBot, q: Callback_Query):
+async def update_answer(c: UtubeBot, q: CallbackQuery):
     chat_id = callback_query.from_user.id
     message_id = callback_query.message.message_id
     msg = int(callback_query.data.split('+')[1])
