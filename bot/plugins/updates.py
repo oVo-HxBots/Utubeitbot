@@ -1,7 +1,13 @@
 from ..config import Config
 from pyrogram import Client, filters
 from ..translations import Messages as tr
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+from pyrogram.types import (
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    Message,
+    CallbackQuery,
+)
 from ..utubebot import UtubeBot
 
 def map(pos):
