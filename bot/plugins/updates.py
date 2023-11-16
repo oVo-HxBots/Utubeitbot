@@ -29,7 +29,7 @@ def map(pos):
     return button
 
 @UtubeBot.on_message(filters.private & filters.incoming & filters.command(['update', 'up']), group=2)
-def _update(c: UtubeBot, m: Message):
+async def _update(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
     await m.reply_text(
         text = tr.UPDATE_MSG[1],
@@ -41,7 +41,7 @@ def _update(c: UtubeBot, m: Message):
 update_callback_filter = filters.create(lambda _, __, query: query.data.startswith('update+'))
 
 @UtubeBot.on_callback_query(update_callback_filter)
-def update_answer(c: UtubeBot, q: Callback_Query):
+async def update_answer(c: UtubeBot, q: Callback_Query):
     chat_id = callback_query.from_user.id
     message_id = callback_query.message.message_id
     msg = int(callback_query.data.split('+')[1])
