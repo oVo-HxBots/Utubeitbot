@@ -51,5 +51,5 @@ async def update_answer(c: UtubeBot, q: CallbackQuery):
     pos = int(q.data.split("+")[1])
     await q.answer()
     await q.edit_message_text(
-        text = tr.UPDATE_MSG[msg],    reply_markup = InlineKeyboardMarkup(map(pos))
+        text = tr.UPDATE_MSG[pos],    reply_markup = InlineKeyboardMarkup(map(pos))
     )
