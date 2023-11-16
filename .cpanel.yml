@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/amit42/repositories/Utubeitbot/
+    - source /home/amit42/virtualenv/repositories/Utubeitbot/3.9/bin/activate && cd $DEPLOYPATH && python3 -m bot
