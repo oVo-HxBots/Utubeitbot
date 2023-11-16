@@ -4,7 +4,7 @@ class Config:
 
     id_pattern = re.compile(r'^.\d+$') 
 
-    BOT_TOKEN = "6898058070:AAHDHQRTWmCzSlTGn68c2itTqznRP-uhX3w"
+    BOT_TOKEN = "6898058070:AAEcx42alujShS2LaVA4F5EJjHmNbHlsH84"
 
     SESSION_NAME = ":memory:"
 
