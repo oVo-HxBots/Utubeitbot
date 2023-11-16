@@ -17,7 +17,7 @@ LOGGER = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 @UtubeBot.on_message(filters.private & filters.incoming & filters.command(['log']) & filters.user(BOT_OWNER), group=2)
-def _send_log(c: UtubeBot, m: Message):
+async def _send_log(c: UtubeBot, m: Message):
   with open('log.txt', 'rb') as f:
     try:
       client.send_document(
@@ -33,7 +33,7 @@ def _send_log(c: UtubeBot, m: Message):
       message.reply_text(e, quote=True)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['restart']) & filters.user(BOT_OWNER), group=2)
-def _restart(c: UtubeBot, m: Message):
+async def _restart(c: UtubeBot, m: Message):
   shutil.rmtree(DOWNLOAD_DIRECTORY)
   LOGGER.info('Deleted DOWNLOAD_DIRECTORY successfully.')
   message.reply_text('**♻️Restarted Successfully !**', quote=True)
