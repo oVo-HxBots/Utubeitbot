@@ -24,6 +24,8 @@ class Config:
 
     BOT_UPTIME  = time.time()
 
+    SUPPORT_CHAT_LINK = "https://t.me/hxsupport"
+
     FORCE_SUB = "HxBots"
 
     AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
