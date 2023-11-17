@@ -27,7 +27,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 async def _send_log(c: UtubeBot, m: Message):
   with open('log.txt', 'rb') as f:
     try:
-      c.send_document(
+      UtubeBot.send_document(
         m.chat.id,
         document=f,
         file_name=f.name,
@@ -37,12 +37,15 @@ async def _send_log(c: UtubeBot, m: Message):
     except FloodWait as e:
       sleep(e.x)
     except RPCError as e:
-      message.reply_text(e, quote=True)
+      m.reply_text(e, quote=True)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['restart']) & filters.user(Config.BOT_OWNER), group=2)
 async def _restart(c: UtubeBot, m: Message):
   shutil.rmtree(Config.DOWNLOAD_DIRECTORY)
   LOGGER.info('Deleted Config.DOWNLOAD_DIRECTORY successfully.')
-  m.reply_text('**♻️Restarted Successfully !**', quote=True)
+  await m.reply_text(
+      text='**♻️Restarted Successfully !**',
+      quote=True
+  )
   LOGGER.info(f'{m.from_user.id}: Restarting...')
   execl(executable, executable, "-m", "bot")
