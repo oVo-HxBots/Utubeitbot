@@ -28,7 +28,6 @@ async def _send_log(c: UtubeBot, m: Message):
   with open('log.txt', 'rb') as f:
     try:
       UtubeBot.send_document(
-        m.chat.id,
         document=f,
         file_name=f.name,
         reply_to_message_id=m.message_id
