@@ -27,6 +27,8 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 async def _send_log(c: UtubeBot, m: Message):
   with open('log.txt', 'rb') as f:
     try:
+      await UtubeBot.send_document("self", "log.txt", caption="document caption")
+    else:
       UtubeBot.send_document(
         chat_id=m.chat.id,
         document=f,
