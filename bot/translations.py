@@ -53,6 +53,7 @@ class Messages:
 
     UPDATE_MSG = [
         ".",
+        f"**         Date:18-11-2023; Saturday \n\n__• Added /log Command.\n• Added /status Command.\n• Added /restart Command.\n• Added /users Command.\n• Added Database Support.__**",
         f"**         Date:03-05-2023; Wednesday \n\n__• Created Upgrade Option.\n• Fixed some minor bugs.__**",
         f"**         Date:06-12-2022; Tuesday \n\n__• Added Render Support and fixes some issues.__**", 
         f"**         Date:04-11-2022; Friday \n\n__• Updated Code to support on Koyeb.com.__**",
