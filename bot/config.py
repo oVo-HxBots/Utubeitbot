@@ -16,7 +16,7 @@ class Config:
 
     CLIENT_SECRET = "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"
 
-    DOWNLOAD_DIRECTORY = "./downloads/"
+    DOWNLOAD_DIRECTORY = "/bot/"
 
     DB_NAME = "utubeitbot"    
 
