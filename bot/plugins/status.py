@@ -86,4 +86,3 @@ def time_format(val):
     else:
         pass
     return val
-
