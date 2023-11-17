@@ -6,11 +6,11 @@ import shutil
 import sys
 import time
 import traceback
+import logging
 
 # import psutil
 
 from ..config import Config
-from ..helpers.display_progress import humanbytes
 from ..utubebot import UtubeBot
 from ..translations import Messages as tr
 from pyrogram import filters as Filters
@@ -25,7 +25,7 @@ log = logging.getLogger(__name__)
     & Filters.command("status")
     & Filters.user(Config.BOT_OWNER)
 )
-async def stats_message_fn(client, message):
+async def stats_message_fn(c: UtubeBot, m: Message):
     restart_time = Config.BOT_START_DATETIME
     hr, mi, se = map(time_format, up_time(time.time() - Config.BOT_START_TIME))
     total, used, free = shutil.disk_usage(".")
@@ -49,5 +49,22 @@ async def stats_message_fn(client, message):
         # f"<b>Downloaded Data:</b> {recv} 🔻\n"
         # f"<b>Uploaded Data:</b> {sent} 🔺"
     )
+    await m.reply_text(
+        texr=msg,
+        quote=True
+    )
 
-    await message.reply_text(msg, quote=True)
+def humanbytes(size):
+    # https://stackoverflow.com/a/49361727/4723940
+    # 2**10 = 1024
+    if not size:
+        return ""
+    power = 2**10
+    n = 0
+    Dic_powerN = {0: " ", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
+    while size > power:
+        size /= power
+        n += 1
+    return str(round(size, 2)) + " " + Dic_powerN[n] + "B"
+
+
