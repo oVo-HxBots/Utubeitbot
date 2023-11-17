@@ -6,6 +6,7 @@ from sys import executable
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, RPCError
 from ..config import Config
+from ..utubebot import UtubeBot
 import logging
 
 logging.basicConfig(
