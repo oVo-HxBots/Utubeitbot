@@ -7,6 +7,12 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, RPCError
 from ..config import Config
 from ..utubebot import UtubeBot
+from pyrogram.types import (
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    Message,
+    CallbackQuery,
+)
 import logging
 
 logging.basicConfig(
