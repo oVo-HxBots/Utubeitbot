@@ -40,7 +40,6 @@ async def stats_message_fn(c: UtubeBot, m: Message):
     total_users = await db.total_users_count()
     uptime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - Config.BOT_UPTIME))    
     start_t = time.time()
-    st = await m.reply('**Aᴄᴄᴇꜱꜱɪɴɢ Tʜᴇ Dᴇᴛᴀɪʟꜱ.....**')    
     end_t = time.time()
     time_taken_s = (end_t - start_t) * 1000
     
