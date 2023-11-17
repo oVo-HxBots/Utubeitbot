@@ -5,7 +5,7 @@ from time import sleep
 from sys import executable
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, RPCError
-from ..config import DOWNLOAD_DIRECTORY, BOT_OWNER
+from ..config import Config
 import logging
 
 logging.basicConfig(
@@ -16,7 +16,7 @@ logging.basicConfig(
 LOGGER = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-@UtubeBot.on_message(filters.private & filters.incoming & filters.command(['log']) & filters.user(BOT_OWNER), group=2)
+@UtubeBot.on_message(filters.private & filters.incoming & filters.command(['log']) & filters.user(Config.BOT_OWNER), group=2)
 async def _send_log(c: UtubeBot, m: Message):
   with open('log.txt', 'rb') as f:
     try:
@@ -32,10 +32,10 @@ async def _send_log(c: UtubeBot, m: Message):
     except RPCError as e:
       message.reply_text(e, quote=True)
 
-@Client.on_message(filters.private & filters.incoming & filters.command(['restart']) & filters.user(BOT_OWNER), group=2)
+@Client.on_message(filters.private & filters.incoming & filters.command(['restart']) & filters.user(Config.BOT_OWNER), group=2)
 async def _restart(c: UtubeBot, m: Message):
-  shutil.rmtree(DOWNLOAD_DIRECTORY)
-  LOGGER.info('Deleted DOWNLOAD_DIRECTORY successfully.')
+  shutil.rmtree(Config.DOWNLOAD_DIRECTORY)
+  LOGGER.info('Deleted Config.DOWNLOAD_DIRECTORY successfully.')
   message.reply_text('**♻️Restarted Successfully !**', quote=True)
   LOGGER.info(f'{message.from_user.id}: Restarting...')
   execl(executable, executable, "-m", "bot")
