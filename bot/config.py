@@ -1,4 +1,5 @@
 import re, os, time
+import datetime
 
 class Config:
 
@@ -7,6 +8,10 @@ class Config:
     BOT_TOKEN = "6898058070:AAEcx42alujShS2LaVA4F5EJjHmNbHlsH84"
 
     SESSION_NAME = ":memory:"
+
+    BOT_START_TIME = time.time()
+    
+    BOT_START_DATETIME = datetime.datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
 
     API_ID = 924859
 
