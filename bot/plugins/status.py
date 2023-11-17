@@ -50,11 +50,13 @@ async def stats_message_fn(c: UtubeBot, m: Message):
         f"<b>Bot Uptime</b>: {hr}:{mi}:{se}\n\n"
         f"<b>Total disk space:</b> {total}\n"
         f"<b>Used :</b> {used}\n"
-        f"<b>Free :</b> {free}\n"
+        f"<b>Free :</b> {free}\n\n"
         f"<b>RAM Usage:</b> {ram}%\n"
-        f"<b>CPU Usage:</b> {cpu}%\n"
+        f"<b>CPU Usage:</b> {cpu}%\n\n"
         f"<b>Downloaded Data:</b> {recv} 🔻\n"
-        f"<b>Uploaded Data:</b> {sent} 🔺"
+        f"<b>Uploaded Data:</b> {sent} 🔺\n\n"
+        f"--------------------------------------------\n"
+        f"**\n🐌 Cᴜʀʀᴇɴᴛ Pɪɴɢ:** `{time_taken_s:.3f} ᴍꜱ` \n**👭 Tᴏᴛᴀʟ Uꜱᴇʀꜱ:** `{total_users}`"
     )
     await m.reply_text(
         text=msg,
