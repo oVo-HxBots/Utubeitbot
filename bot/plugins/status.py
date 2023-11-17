@@ -50,7 +50,7 @@ async def stats_message_fn(c: UtubeBot, m: Message):
         # f"<b>Uploaded Data:</b> {sent} 🔺"
     )
     await m.reply_text(
-        texr=msg,
+        text=msg,
         quote=True
     )
 
