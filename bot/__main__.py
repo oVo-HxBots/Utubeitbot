@@ -9,5 +9,7 @@ if __name__ == "__main__":
     logging.getLogger("pyrogram").setLevel(
         logging.INFO if Config.DEBUG else logging.WARNING
     )
+    if not os.path.isdir(Config.DOWNLOAD_DIRECTORY):
+        os.makedirs(Config.DOWNLOAD_DIRECTORY)
 
     UtubeBot().run()
