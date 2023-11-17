@@ -55,7 +55,7 @@ async def stats_message_fn(c: UtubeBot, m: Message):
         f"<b>Downloaded Data:</b> {recv} 🔻\n"
         f"<b>Uploaded Data:</b> {sent} 🔺\n\n"
         f"--------------------------------------------\n"
-        f"**\n🐌 Cᴜʀʀᴇɴᴛ Pɪɴɢ:** `{time_taken_s:.3f} ᴍꜱ` \n**👭 Tᴏᴛᴀʟ Uꜱᴇʀꜱ:** `{total_users}`"
+        f"<b>\n🐌 Cᴜʀʀᴇɴᴛ Pɪɴɢ: `{time_taken_s:.3f} ᴍꜱ` \n👭 Tᴏᴛᴀʟ Uꜱᴇʀꜱ: `{total_users}`</b>"
     )
     await m.reply_text(
         text=msg,
