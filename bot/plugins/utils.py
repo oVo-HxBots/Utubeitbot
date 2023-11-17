@@ -34,7 +34,8 @@ async def _send_log(c: UtubeBot, m: Message):
         file_name=f.name,
         reply_to_message_id=m.message_id
         )
-      LOGGER.info(f'Log file sent to {m.from_user.id}')
+      LOGGER.info(f'Log file sent to {m.from_user.id} .')
+      
     except FloodWait as e:
       sleep(e.x)
     except RPCError as e:
