@@ -11,9 +11,6 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from ..helpers.database import db
 
 
-msg = (
-    f"Country: PY_DATA[country]"
-)
 @UtubeBot.on_message(
     Filters.private
     & Filters.incoming
@@ -32,6 +29,9 @@ async def proxies(c: UtubeBot, m: Message):
     r = requests.get(urlToGet , proxies=proxies)
     print("Response:\n{}".format(r.text))
     PY_DATA = r.json()
+    msg = (
+    f"Country: PY_DATA["country"]"
+    )
     await m.reply_text(
         text=msg,
         quote=True
