@@ -51,10 +51,10 @@ class Messages:
     ]
 
     PROXIES_MSG = (
-          ""Port:6060""
-          ""Country:{}".format(r.json().get("country"))"
-          ""ISP:{}".format(r.json().get("isp"))"
-          ""IP:{}".format(r.json().get("query"))"
+          "**Port:6060**"
+          "**Country:{}.format(r.json().get("country"))**"
+          "**ISP:{}.format(r.json().get("isp"))**"
+          "**IP:{}.format(r.json().get("query"))**"
     )
   
     LOGIN_MSG = (
