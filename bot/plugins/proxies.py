@@ -32,8 +32,8 @@ async def proxies(c: UtubeBot, m: Message):
     
     await m.reply_text(
         text=f'IP: {r.json().get("query")}\n'
-             f'Port: 6060'
-             f'Country: {r.json().get("country")}'
-             f'ISP: {r.json().get("isp")}',
+             f'Port: 6060\n'
+             f'Country: {r.json().get("country")}\n'
+             f'ISP: {r.json().get("isp")}\n',
         quote=True
     )
