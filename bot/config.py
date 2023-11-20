@@ -3,7 +3,7 @@ import datetime
 
 class Config:
   
-    BOT_TOKEN = "1173368697:AAEOETJROlE0PGE5HXK_UZKZCy_WSPaXYvo"
+    BOT_TOKEN = "6898058070:AAEcx42alujShS2LaVA4F5EJjHmNbHlsH84"
 
     id_pattern = re.compile(r'^.\d+$') 
 
