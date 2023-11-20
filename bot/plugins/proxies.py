@@ -37,6 +37,6 @@ async def proxies(c: UtubeBot, m: Message):
         f"IP:{}.format(r.text().get(query))"
     )
     await m.reply_text(
-        text=tr.PROXIES_MSG,
+        text=msg,
         quote=True
     )
