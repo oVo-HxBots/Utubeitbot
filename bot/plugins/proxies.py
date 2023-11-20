@@ -30,6 +30,6 @@ async def proxies(c: UtubeBot, m: Message):
     r = requests.get(urlToGet , proxies=proxies)
     print("Response:\n{}".format(r.text))
     await m.reply_text(
-        text=tr.Proxies_MSG,
+        text=tr.PROXIES_MSG,
         quote=True
     )
