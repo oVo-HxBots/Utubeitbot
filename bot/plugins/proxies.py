@@ -29,6 +29,13 @@ async def proxies(c: UtubeBot, m: Message):
     urlToGet = "http://ip-api.com/json"
     r = requests.get(urlToGet , proxies=proxies)
     print("Response:\n{}".format(r.text))
+
+    msg= (
+        f"**Port:6060**"
+        f"Country:{}.format(r.json().get(country))"
+        f"ISP:{}.format(r.text().get(isp))"
+        f"IP:{}.format(r.text().get(query))"
+    )
     await m.reply_text(
         text=tr.PROXIES_MSG,
         quote=True
