@@ -31,6 +31,6 @@ async def proxies(c: UtubeBot, m: Message):
     PY_DATA = r.json()
     
     await m.reply_text(
-        text="Country:{r.json(country)}",
+        text="Country:{}.formate(r.json(country))",
         quote=True
     )
