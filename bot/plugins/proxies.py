@@ -18,7 +18,7 @@ from ..helpers.database import db
     & Filters.command("proxies")
 )
 async def proxies(c: UtubeBot, m: Message):
-    username = "1owsgh8w5iux12r-session-qbvgjn6dbp-lifetime-120"
+    username = "1owsgh8w5iux12r"
     password = "3atwlzo7997woep"
     proxy = "rp.proxyscrape.com:6060"
     proxy_auth = "{}:{}@{}".format(username, password, proxy)
