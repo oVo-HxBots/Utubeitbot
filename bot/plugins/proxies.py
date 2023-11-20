@@ -12,7 +12,7 @@ from ..helpers.database import db
 
 
 msg = (
-    f"Country: PY_DATA[country]
+    f"Country: PY_DATA[country]"
 )
 @UtubeBot.on_message(
     Filters.private
