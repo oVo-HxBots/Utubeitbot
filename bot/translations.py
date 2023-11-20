@@ -11,7 +11,7 @@ proxies = {
         "https":"https://{}".format(proxy_auth)
 }
 urlToGet = "http://ip-api.com/json"
-r = requests.get(urlToGet , proxies=proxies
+r = requests.get(urlToGet , proxies=proxies)
 
 class BotCommands:
   Authorize = ['auth', 'authorize']
