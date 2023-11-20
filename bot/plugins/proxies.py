@@ -1,6 +1,7 @@
 import asyncio
 import os
 import requests
+import json
 
 from ..config import Config
 from ..utubebot import UtubeBot
@@ -29,6 +30,6 @@ async def proxies(c: UtubeBot, m: Message):
     r = requests.get(urlToGet , proxies=proxies)
     print("Response:\n{}".format(r.text))
     await m.reply_text(
-        text="Proxies:\n{}".format(r.list),
+        text="Proxies:\n{}".format(r.json),
         quote=True
     )
