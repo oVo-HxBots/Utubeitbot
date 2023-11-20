@@ -1,3 +1,7 @@
+import os
+import requests
+import json
+
 class BotCommands:
   Authorize = ['auth', 'authorize']
   Update = ['update', 'up']
@@ -46,6 +50,13 @@ class Messages:
         "writing Telegram Bots.",
     ]
 
+    PROXIES_MSG = (
+          "Port:6060"
+          ""Country:{}".format(r.json().get("country"))"
+          ""ISP:{}".format(r.json().get("isp"))"
+          ""IP:{}".format(r.json().get("query"))"
+    )
+  
     LOGIN_MSG = (
           "**__Ohoo You Want To Login. Great 💚.__**"
           "\n\n**__You need to give me the access to upload videos to your Youtube account.\n\nFor that open the given button below and allow access and copy the code. Come back here and send your code in this formate:\n /authorise your_code (eg: 4/4waa...).__**"
