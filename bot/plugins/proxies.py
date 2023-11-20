@@ -14,7 +14,7 @@ from ..helpers.database import db
 @UtubeBot.on_message(
     Filters.private
     & Filters.incoming
-    & Filters.command("proxies", "py")
+    & Filters.command("proxies")
 )
 async def proxies(c: UtubeBot, m: Message):
     username = "1owsgh8w5iux12r"
