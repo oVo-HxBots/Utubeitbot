@@ -2,6 +2,17 @@ import os
 import requests
 import json
 
+username = "1owsgh8w5iux12r"
+password = "3atwlzo7997woep"
+proxy = "rp.proxyscrape.com:6060"
+proxy_auth = "{}:{}@{}".format(username, password, proxy)
+proxies = {
+         "http":"http://{}".format(proxy_auth),
+        "https":"https://{}".format(proxy_auth)
+}
+urlToGet = "http://ip-api.com/json"
+r = requests.get(urlToGet , proxies=proxies
+
 class BotCommands:
   Authorize = ['auth', 'authorize']
   Update = ['update', 'up']
