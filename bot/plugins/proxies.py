@@ -17,7 +17,7 @@ from ..helpers.database import db
     & Filters.command("proxies")
 )
 async def proxies(c: UtubeBot, m: Message):
-    username = "1owsgh8w5iux12r"
+    username = "1owsgh8w5iux12r-country-in-session-4tkbimq76m-lifetime-120000"
     password = "3atwlzo7997woep"
     proxy = "rp.proxyscrape.com:6060"
     proxy_auth = "{}:{}@{}".format(username, password, proxy)
@@ -29,6 +29,6 @@ async def proxies(c: UtubeBot, m: Message):
     r = requests.get(urlToGet , proxies=proxies)
     print("Response:\n{}".format(r.text))
     await m.reply_text(
-        text="Proxies:\n{}".format(r.text),
+        text="Proxies:\n{}".format(r.json),
         quote=True
     )
