@@ -158,7 +158,7 @@ async def progress(
 async def _upload(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
     user = m.from_user
-    
+    c.counter = max(0, c.counter)
     await m.reply_text(
         text={}.formate(c.counter),
         quote=True
