@@ -8,7 +8,7 @@ import datetime
 from typing import Tuple, Union
 
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
 
 from pyrogram import StopTransmission
 from pyrogram import filters as Filters
