@@ -23,6 +23,8 @@ from ..utubebot import UtubeBot
 
 log = logging.getLogger(__name__)
 
+daily_video_counts = {}
+today_date = datetime.date.today()
 
 @UtubeBot.on_message(
     Filters.private
