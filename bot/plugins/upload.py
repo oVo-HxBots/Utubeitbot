@@ -171,6 +171,6 @@ async def _upload(c: UtubeBot, m: Message):
     user = m.from_user
     c.counter = max(0, c.counter)
     await m.reply_text(
-        text="Daily count for {}: {}".format(today_date, daily_video_counts[today_date]),
+        text="Daily count for: {}".format(daily_video_counts[today_date]),
         quote=True
     )
