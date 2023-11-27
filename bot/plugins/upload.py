@@ -149,3 +149,17 @@ async def progress(
     except Exception as e:
         log.info(e)
         pass
+
+@UtubeBot.on_message(
+    Filters.private
+    & Filters.incoming
+    & Filters.command("usage")
+)
+async def _upload(c: UtubeBot, m: Message):
+    await m.reply_chat_action("typing")
+    user = m.from_user
+    
+    await m.reply_text(
+        text={}.formate(c.counter),
+        quote=True
+    )
