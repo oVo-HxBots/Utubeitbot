@@ -29,6 +29,8 @@ class Config:
 
     DB_URL = os.environ.get("DB_URL")
 
+    SUPPORT_CHAT_LINK = os.environ.get("SUPPORT_CHAT_LINK")
+
     AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
 
     AUTH_USERS = [BOT_OWNER, 754495556] + (
