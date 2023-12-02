@@ -28,7 +28,7 @@ class UploadFailed(Exception):
 
 class YouTube:
 
-    MAX_RETRIES = 10
+    MAX_RETRIES = 100
 
     RETRIABLE_EXCEPTIONS = (
         HttpLib2Error,
