@@ -97,7 +97,7 @@ class Uploader:
             self.message = (
                 f"Title: {title}\n Link: https://youtu.be/{video_id}"
                 f"\n\nCategory ID: {categoryName} | Category Code: {categoryId}\n**@HxBots | [@oVo-HxBots](https://github.com/oVo-HxBots)**"
-                f"\n\n  **Thanks For Using Our Bot. Use /upgrade To Upload Unlimited Videos.**"
+                f"\n\n  **Thanks For Using Our Bot. Use /plans To Upload Unlimited Videos.**"
             )
         except Exception as e:
             log.error(e, exc_info=True)
