@@ -79,7 +79,7 @@ async def _login(c: UtubeBot, m: Message):
 @UtubeBot.on_message(
     Filters.private
     & Filters.incoming
-    & Filters.command("upgrade")
+    & Filters.command("plan")
 )
 async def _upgrade(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
@@ -90,13 +90,19 @@ async def _upgrade(c: UtubeBot, m: Message):
              f"Plan Name:- BASIC\n"
              f"Video Limit:- 10 Videos Daily\n"
              f"Price:-\n"
-                   f"INR:- ₹139\n"
+                   f"INR:- 139₹\n"
              f"Validity:- 28 days\n\n"
         f"Plan 2:-\n"
              f"Plan Name:- UPGRADE\n"
              f"Video limit:- 20 Videos Daily\n"
              f"Price:-\n"
-                   f"INR:-  249₹\n"
+                   f"INR:- 249₹\n"
+             f"Validity:- 28 days\n\n"
+        f"Plan 2:-\n"
+             f"Plan Name:- PREMIUM\n"
+             f"Video limit:- 100 Videos Daily\n"
+             f"Price:-\n"
+                   f"INR:- 949₹\n"
              f"Validity:- 28 days\n\n"
         f"⚠️ Indian All payment methods accepted\n\n"
         f"⚠️ Payment through Crypto , Paypal , Binance , UPI , Paytm , Phonepe , wallet etc. Accepted.\n\n"
@@ -107,6 +113,6 @@ async def _upgrade(c: UtubeBot, m: Message):
         text=msg,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Subscription Details", url="https://t.me/+97tA4_TrzyowMjk1")]]
+            [[InlineKeyboardButton(text="More Details", url="https://t.me/+97tA4_TrzyowMjk1")]]
      )
 )
