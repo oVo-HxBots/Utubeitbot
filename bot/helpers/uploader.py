@@ -15,6 +15,7 @@ class Uploader:
     def __init__(self, file: str, title: Optional[str] = None):
         self.file = file
         self.title = title
+        self.description = description
         self.video_category = {
             1: "Film & Animation",
             2: "Autos & Vehicles",
@@ -67,9 +68,7 @@ class Uploader:
                 .replace("<", "")
                 .replace(">", "")[:100]
             )
-            description = (
-                Config.VIDEO_DESCRIPTION
-                + "\nUploaded to YouTube with https://tx.me/Utubeitbot"
+            description = ( self.description if self.description else Config.VIDEO_DESCRIPTION + "\nUploaded to YouTube with https://tx.me/Utubeitbot"
             )[:5000]
             if not Config.UPLOAD_MODE:
                 privacyStatus = "unlisted"
