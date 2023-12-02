@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 
 
 class Uploader:
-    def __init__(self, file: str, title: Optional[str] = None):
+    def __init__(self, file: str, title: Optional[str] = None, description: Optional[str] = None):
         self.file = file
         self.title = title
         self.description = description
