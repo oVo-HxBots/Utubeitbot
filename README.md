@@ -61,6 +61,9 @@ $ source venv/bin/activate
 - `CLIENT_ID`(Required) - Your google client id.
 - `CLIENT_SECRET`(Required) - Your google client secret.
 - `BOT_OWNER`(Required) - Telegram id of bot owner.
+- `SUPPORT_CHAT_LINK`(Required) - Group/Channel Link Eg:- https://t.me/HxSupport.
+- `DB_URL`(Required) - Optional If You Don't Want It.
+- `DB_NAME`(Optional) - Mongo Database Name.
 - `AUTH_USERS`(optional) - Telegram id's of authorised users, separated by `,`.
 - `VIDEO_DESCRIPTION`(optional) - Any default description to be aded to the video.
 - `VIDEO_CATEGORY`(optional) - YouTube's video category id. If not specified or specified id is invalid, category id will be selected randomly.
