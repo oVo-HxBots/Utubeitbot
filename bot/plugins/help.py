@@ -79,7 +79,7 @@ async def _login(c: UtubeBot, m: Message):
 @UtubeBot.on_message(
     Filters.private
     & Filters.incoming
-    & Filters.command("plan")
+    & Filters.command("plans")
 )
 async def _upgrade(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
@@ -98,7 +98,7 @@ async def _upgrade(c: UtubeBot, m: Message):
              f"Price:-\n"
                    f"INR:- 249₹\n"
              f"Validity:- 28 days\n\n"
-        f"Plan 2:-\n"
+        f"Plan 3:-\n"
              f"Plan Name:- PREMIUM\n"
              f"Video limit:- 100 Videos Daily\n"
              f"Price:-\n"
