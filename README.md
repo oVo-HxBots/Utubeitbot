@@ -155,13 +155,18 @@ You can contact me [@hxSupport](https://telegram.dog/hxSupport "hxSupport").
 
 ### Commands
 ```
-upgrade - Upgrade to No Limits
-start - check I'm alive
-login - login
-help - for help
-upload - replay with media to upload
-authorise - + your code [4/4wEqfW.......
+start - Check I'm Alive Or Dead
+login - Login Into Account
+help - Incase U Need Help
+upload - Replay To Video
+authorise - + Your Code [4/9OwEqfW.......]
 save_auth_data - to restore your authorize
+upgrade - Upgrade to No Limits
+update - Check New Updates
+status - Check Bot's Status
+broadcast - Only Admins ⚠️ 
+restart - Only Admins ⚠️
+users - Only Admins ⚠️
 ```
 
 ### License
