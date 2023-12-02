@@ -1,4 +1,8 @@
-import os
+import re, os, time
+import datetime
+
+
+id_pattern = re.compile(r'^.\d+$') 
 
 
 class Config:
@@ -16,6 +20,14 @@ class Config:
     CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 
     BOT_OWNER = int(os.environ.get("BOT_OWNER"))
+
+    BOT_START_TIME = time.time()
+    
+    BOT_START_DATETIME = datetime.datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+
+    DB_NAME = os.environ.get("DB_NAME", "Utubeitbot")  
+
+    DB_URL = os.environ.get("DB_URL")
 
     AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
 
