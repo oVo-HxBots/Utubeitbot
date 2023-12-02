@@ -92,6 +92,7 @@ async def _upgrade(c: UtubeBot, m: Message):
              f"Price:-\n"
                    f"INR:- 139₹\n"
              f"Validity:- 28 days\n\n"
+        f"⚠️ Youtube Only Allow 10 Videos Daily To Upload Per Channel\n\n"
         f"⚠️ Indian All payment methods accepted\n\n"
         f"⚠️ Payment through Crypto , Paypal , Binance , UPI , Paytm , Phonepe , wallet etc. Accepted.\n\n"
         f"⚠️ Services Are Non refundable.\n\n"
