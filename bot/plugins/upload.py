@@ -49,8 +49,6 @@ async def _upload(c: UtubeBot, m: Message):
 
     snt = await m.reply_text(tr.PROCESSING, True)
     c.counter += 1
-    today_date = datetime.date.today()
-    daily_video_counts[today_date] = daily_video_counts.get(today_date, 0) + 1
     download_id = get_download_id(c.download_controller)
     c.download_controller[download_id] = True
 
@@ -62,7 +60,6 @@ async def _upload(c: UtubeBot, m: Message):
     if not status:
         c.counter -= 1
         c.counter = max(0, c.counter)
-        daily_video_counts[today_date] = daily_video_counts.get(today_date, 0) - 1
         await snt.edit_text(text=file, parse_mode="markdown")
         return
 
