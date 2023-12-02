@@ -7,9 +7,6 @@ import asyncio
 import datetime
 from typing import Tuple, Union
 
-from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
-
 from pyrogram import StopTransmission
 from pyrogram import filters as Filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
@@ -22,9 +19,6 @@ from ..utubebot import UtubeBot
 
 
 log = logging.getLogger(__name__)
-
-daily_video_counts = {}
-today_date = datetime.date.today()
 
 @UtubeBot.on_message(
     Filters.private
@@ -158,19 +152,3 @@ async def progress(
         log.info(e)
         pass
 
-def count_videos(update: Update, context: CallbackContext) -> None:
-    chat_id = update.message.chat_id
-    
-@UtubeBot.on_message(
-    Filters.private
-    & Filters.incoming
-    & Filters.command("usage")
-)
-async def _upload(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
-    user = m.from_user
-    c.counter = max(0, c.counter)
-    await m.reply_text(
-        text="Daily count for: {daily_video_counts[today_date]}",
-        quote=True
-    )
