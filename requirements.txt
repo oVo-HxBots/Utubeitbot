@@ -20,7 +20,7 @@ pyaes==1.6.1
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pyparsing==2.4.7
-Pyrogram==1.2.11
+Pyrogram
 PySocks==1.7.1
 requests==2.26.0
 requests-oauthlib==1.3.0
