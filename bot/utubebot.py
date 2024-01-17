@@ -10,6 +10,6 @@ class UtubeBot(Client):
             api_hash=Config.API_HASH,
             plugins=dict(root="bot.plugins"),
             workers=6,
-        self.DOWNLOAD_WORKERS = 6
-        self.counter = 0
+        self.DOWNLOAD_WORKERS = 6,
+        self.counter = 0,
         self.download_controller = {}
