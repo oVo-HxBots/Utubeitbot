@@ -6,7 +6,6 @@ from .config import Config
 class UtubeBot(Client):
     def __init__(self):
         super().__init__(
-            6
             session_name=Config.SESSION_NAME,
             bot_token=Config.BOT_TOKEN,
             api_id=Config.API_ID,
