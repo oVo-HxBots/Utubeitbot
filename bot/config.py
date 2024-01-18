@@ -3,11 +3,11 @@ import datetime
 
 class Config:
   
-    BOT_TOKEN = "6978992437:AAHtzXcWtjSO95txtuc2t6KNfbuz7nJqeOY"
+    BOT_TOKEN = "1173368697:AAGwGn4r9uFgHsW3Omce1NX735Oi5N0FyPk"
 
     id_pattern = re.compile(r'^.\d+$') 
 
-    SESSION_NAME = ":memory:"
+    SESSION_NAME = "Utubeitbot"
 
     BOT_START_TIME = time.time()
     
