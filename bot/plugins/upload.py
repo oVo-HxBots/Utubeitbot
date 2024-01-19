@@ -25,7 +25,6 @@ log = logging.getLogger(__name__)
     Filters.private
     & Filters.incoming
     & Filters.command("upload")
-    & Filters.user(Config.AUTH_USERS)
 )
 async def _upload(c: UtubeBot, m: Message):
     if not os.path.exists(Config.CRED_FILE):
