@@ -12,7 +12,6 @@ from ..helpers.database import db
     & Filters.command("start")
 )
 async def _start(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
     user = m.from_user
     
     if not await db.is_user_exist(user.id):
@@ -25,14 +24,14 @@ async def _start(c: UtubeBot, m: Message):
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup([
                   [
-                      InlineKeyboardButton("How To Use Me🙄", callback_data="/help")
+                      InlineKeyboardButton("How To Use Me🙄", callback_data="help")
                   ],
                   [
                       InlineKeyboardButton("Project Channel!", url="https://t.me/hxbots"),
                       InlineKeyboardButton("Support Group", url="https://t.me/HxSupport")
                   ],
                   [  
-                      InlineKeyboardButton("Upgrade😀", url="https://t.me/+97tA4_TrzyowMjk1")
+                      InlineKeyboardButton("Upgrade😀", callback_data="plans")
                   ]]
         ),
     )
