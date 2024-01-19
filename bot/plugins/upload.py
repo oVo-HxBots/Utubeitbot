@@ -7,6 +7,7 @@ import asyncio
 import datetime
 from typing import Tuple, Union
 
+from pyrogram import enums
 from pyrogram import StopTransmission
 from pyrogram import filters as Filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
@@ -60,7 +61,7 @@ async def _upload(c: UtubeBot, m: Message):
     if not status:
         c.counter -= 1
         c.counter = max(0, c.counter)
-        await snt.edit_text(text=file, parse_mode="markdown")
+        await snt.edit_text(text=file, enums.ParseMode.MARKDOWN)
         return
 
     try:
@@ -76,7 +77,7 @@ async def _upload(c: UtubeBot, m: Message):
     if not status:
         c.counter -= 1
         c.counter = max(0, c.counter)
-    await snt.edit_text(text=link, parse_mode="markdown")
+    await snt.edit_text(text=link, enums.ParseMode.MARKDOWN)
 
 
 def get_download_id(storage: dict) -> str:
