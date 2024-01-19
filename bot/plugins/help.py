@@ -39,7 +39,6 @@ def map_btns(pos):
     & Filters.user(Config.AUTH_USERS)
 )
 async def _help(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
     await m.reply_text(
         text=tr.HELP_MSG[1],
         reply_markup=InlineKeyboardMarkup(map_btns(1)),
@@ -70,7 +69,6 @@ url = auth.GetAuthUrl()
     & Filters.user(Config.AUTH_USERS)
 )
 async def _login(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
     await m.reply_text(
         text=tr.LOGIN_MSG,
         reply_markup=InlineKeyboardMarkup(
@@ -89,7 +87,6 @@ async def _login(c: UtubeBot, m: Message):
 )
 
 async def _upgrade(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
     await m.reply_text(
         text=tr.UPGRADE_MSG,
         disable_web_page_preview=True,
