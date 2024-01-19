@@ -38,7 +38,6 @@ def map_btns(pos):
     & Filters.command("help")
 )
 async def _help(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
     await m.reply_text(
         text=tr.HELP_MSG[1],
         reply_markup=InlineKeyboardMarkup(map_btns(1)),
@@ -68,7 +67,6 @@ url = auth.GetAuthUrl()
     & Filters.command("login")
 )
 async def _login(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
     await m.reply_text(
         text=tr.LOGIN_MSG,
         reply_markup=InlineKeyboardMarkup(
@@ -82,7 +80,6 @@ async def _login(c: UtubeBot, m: Message):
     & Filters.command("plans")
 )
 async def _upgrade(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
     msg=(
         f"👉 Plans For DS [Youtube Upload Bot](https://t.me/Utubeitbot):-\n\n"
         f"💗  Plans 💗\n\n"
