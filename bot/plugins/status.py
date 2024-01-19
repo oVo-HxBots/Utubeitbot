@@ -24,7 +24,6 @@ log = logging.getLogger(__name__)
     Filters.private
     & Filters.incoming
     & Filters.command("status")
-    & Filters.user(Config.BOT_OWNER)
 )
 async def stats_message_fn(c: UtubeBot, m: Message):
     restart_time = Config.BOT_START_DATETIME
