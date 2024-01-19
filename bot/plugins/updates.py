@@ -36,7 +36,6 @@ def map(pos):
 
 @UtubeBot.on_message(filters.private & filters.incoming & filters.command(['update', 'up']), group=2)
 async def _update(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
     await m.reply_text(
         text = tr.UPDATE_MSG[1],
         disable_web_page_preview=True,
