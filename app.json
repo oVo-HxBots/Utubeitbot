@@ -15,11 +15,11 @@
       "required":false
     },
     "API_ID": {
-      "description": "Your API_ID.  Refer project docs.",
+      "description": "24677660",
       "value": ""
     },
     "API_HASH": {
-      "description": "Your API_ID. Refer project docs.",
+      "description": "08bbae3d0666f3f9df11194d225bf122",
       "value": ""
     },
     "CLIENT_ID": {
