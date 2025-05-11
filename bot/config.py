@@ -7,19 +7,19 @@ id_pattern = re.compile(r'^.\d+$')
 
 class Config:
 
-    BOT_TOKEN = os.environ.get("BOT_TOKEN")
+    BOT_TOKEN = os.environ.get("7838647960:AAFV_c63_j4Afs_IrH9B0QMVGYIczwGEzHk")
 
     SESSION_NAME = ":memory:"
 
-    API_ID = int(os.environ.get("API_ID"))
+    API_ID = int(os.environ.get("23634056"))
 
-    API_HASH = os.environ.get("API_HASH")
+    API_HASH = os.environ.get("f2debf49c2f57bad88086ecd17cb5df3")
 
     CLIENT_ID = os.environ.get("CLIENT_ID")
 
     CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 
-    BOT_OWNER = int(os.environ.get("BOT_OWNER"))
+    BOT_OWNER = int(os.environ.get("Marco_bgm"))
 
     BOT_START_TIME = time.time()
     
@@ -33,7 +33,7 @@ class Config:
 
     AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
 
-    AUTH_USERS = [BOT_OWNER, 754495556] + (
+    AUTH_USERS = [BOT_OWNER, 5082207960] + (
         [int(user.strip()) for user in AUTH_USERS_TEXT.split(",")]
         if AUTH_USERS_TEXT
         else []
@@ -53,7 +53,7 @@ class Config:
 
     DEBUG = bool(os.environ.get("DEBUG"))
 
-    UPLOAD_MODE = os.environ.get("UPLOAD_MODE") or False
+    UPLOAD_MODE = os.environ.get("private") or False
     if UPLOAD_MODE:
         if UPLOAD_MODE.lower() in ["private", "public", "unlisted"]:
             UPLOAD_MODE = UPLOAD_MODE.lower()
