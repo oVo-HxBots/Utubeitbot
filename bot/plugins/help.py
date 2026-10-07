@@ -5,6 +5,7 @@ from pyrogram.types import (
     Message,
     CallbackQuery,
 )
+from pyrogram.enums import ChatAction
 
 from ..youtube import GoogleAuth
 from ..config import Config
@@ -39,7 +40,7 @@ def map_btns(pos):
     & Filters.user(Config.AUTH_USERS)
 )
 async def _help(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
+    await m.reply_chat_action(ChatAction.TYPING)
     await m.reply_text(
         text=tr.HELP_MSG[1],
         reply_markup=InlineKeyboardMarkup(map_btns(1)),
@@ -70,30 +71,26 @@ url = auth.GetAuthUrl()
     & Filters.user(Config.AUTH_USERS)
 )
 async def _login(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
+    await m.reply_chat_action(ChatAction.TYPING)
     await m.reply_text(
         text=tr.LOGIN_MSG,
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Authentication URL", url=url)]]
-     )
-)
+        ),
+    )
+
 
 @UtubeBot.on_message(
-
     Filters.private
-
     & Filters.incoming
-
     & Filters.command("upgrade")
-
 )
-
 async def _upgrade(c: UtubeBot, m: Message):
-    await m.reply_chat_action("typing")
+    await m.reply_chat_action(ChatAction.TYPING)
     await m.reply_text(
         text=tr.UPGRADE_MSG,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Subscription Details", url="https://t.me/+97tA4_TrzyowMjk1")]]
-     )
-)
+        ),
+    )
