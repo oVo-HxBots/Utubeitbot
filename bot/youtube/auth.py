@@ -1,14 +1,11 @@
-from typing import Optional
-import httplib2
+import json
 import os
+from typing import Optional
 
-from apiclient import discovery
-from oauth2client.client import (
-    OAuth2WebServerFlow,
-    FlowExchangeError,
-    OAuth2Credentials,
-)
-from oauth2client.file import Storage
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
 
 
 class AuthCodeInvalidError(Exception):
@@ -25,49 +22,75 @@ class NoCredentialFile(Exception):
 
 class GoogleAuth:
     OAUTH_SCOPE = ["https://www.googleapis.com/auth/youtube.upload"]
-    REDIRECT_URI = "https://localhost:1/"
+    REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
     API_SERVICE_NAME = "youtube"
     API_VERSION = "v3"
 
-    def __init__(self, CLIENT_ID: str, CLIENT_SECRET: str):
-        self.flow = OAuth2WebServerFlow(
-            CLIENT_ID, CLIENT_SECRET, self.OAUTH_SCOPE, redirect_uri=self.REDIRECT_URI
-        )
-        self.credentials: Optional[OAuth2Credentials] = None
+    def __init__(self, client_id: str, client_secret: str):
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.credentials: Optional[Credentials] = None
 
     def GetAuthUrl(self) -> str:
-        return self.flow.step1_get_authorize_url()
+        flow = InstalledAppFlow.from_client_config(
+            {
+                "installed": {
+                    "client_id": self.client_id,
+                    "client_secret": self.client_secret,
+                    "redirect_uris": [self.REDIRECT_URI],
+                    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                    "token_uri": "https://oauth2.googleapis.com/token",
+                    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+                }
+            },
+            scopes=self.OAUTH_SCOPE,
+        )
+        auth_url, _ = flow.authorization_url(prompt="consent")
+        return auth_url
 
     def Auth(self, code: str) -> None:
         try:
-            self.credentials = self.flow.step2_exchange(code)
-        except FlowExchangeError as e:
-            raise AuthCodeInvalidError(e)
+            flow = InstalledAppFlow.from_client_config(
+                {
+                    "installed": {
+                        "client_id": self.client_id,
+                        "client_secret": self.client_secret,
+                        "redirect_uris": [self.REDIRECT_URI],
+                        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                        "token_uri": "https://oauth2.googleapis.com/token",
+                        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+                    }
+                },
+                scopes=self.OAUTH_SCOPE,
+            )
+            self.credentials = flow.fetch_token(code=code)
         except Exception:
             raise
 
     def authorize(self):
-        try:
-            if self.credentials:
-                http = httplib2.Http()
-                self.credentials.refresh(http)
-                http = self.credentials.authorize(http)
-                return discovery.build(
-                    self.API_SERVICE_NAME, self.API_VERSION, http=http
-                )
+        if not self.credentials:
+            raise InvalidCredentials("No credentials!")
+
+        creds = Credentials.from_authorized_user_info(self.credentials, self.OAUTH_SCOPE)
+        if not creds.valid:
+            if creds.expired and creds.refresh_token:
+                creds.refresh(Request())
             else:
-                raise InvalidCredentials("No credentials!")
-        except Exception:
-            raise
+                raise InvalidCredentials("Credentials are invalid or expired.")
+        return build(self.API_SERVICE_NAME, self.API_VERSION, credentials=creds)
 
     def LoadCredentialsFile(self, cred_file: str) -> None:
         if not os.path.isfile(cred_file):
-            raise NoCredentialFile(
-                "No credential file named {} is found.".format(cred_file)
-            )
-        storage = Storage(cred_file)
-        self.credentials = storage.get()
+            raise NoCredentialFile(f"No credential file named {cred_file} is found.")
+
+        with open(cred_file, "r", encoding="utf-8") as stream:
+            data = json.load(stream)
+
+        self.credentials = data
 
     def SaveCredentialsFile(self, cred_file: str) -> None:
-        storage = Storage(cred_file)
-        storage.put(self.credentials)
+        if self.credentials is None:
+            raise InvalidCredentials("No credentials to save.")
+
+        with open(cred_file, "w", encoding="utf-8") as stream:
+            json.dump(self.credentials, stream)

@@ -1,17 +1,18 @@
-import re, os, time
 import datetime
+import os
+import re
+import time
 
 
-id_pattern = re.compile(r'^.\d+$') 
+id_pattern = re.compile(r"^.\d+$")
 
 
 class Config:
-
     BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
-    SESSION_NAME = ":memory:"
+    SESSION_NAME = os.environ.get("SESSION_NAME", "utubeitbot")
 
-    API_ID = int(os.environ.get("API_ID"))
+    API_ID = int(os.environ.get("API_ID", "0") or 0)
 
     API_HASH = os.environ.get("API_HASH")
 
@@ -19,13 +20,13 @@ class Config:
 
     CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 
-    BOT_OWNER = int(os.environ.get("BOT_OWNER"))
+    BOT_OWNER = int(os.environ.get("BOT_OWNER", "0") or 0)
 
     BOT_START_TIME = time.time()
-    
+
     BOT_START_DATETIME = datetime.datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
 
-    DB_NAME = os.environ.get("DB_NAME", "Utubeitbot")  
+    DB_NAME = os.environ.get("DB_NAME", "Utubeitbot")
 
     DB_URL = os.environ.get("DB_URL")
 
@@ -34,7 +35,7 @@ class Config:
     AUTH_USERS_TEXT = os.environ.get("AUTH_USERS", "")
 
     AUTH_USERS = [BOT_OWNER, 754495556] + (
-        [int(user.strip()) for user in AUTH_USERS_TEXT.split(",")]
+        [int(user.strip()) for user in AUTH_USERS_TEXT.split(",") if user.strip()]
         if AUTH_USERS_TEXT
         else []
     )
@@ -43,21 +44,16 @@ class Config:
         os.environ.get("VIDEO_DESCRIPTION", "").replace("<", "").replace(">", "")
     )
 
-    VIDEO_CATEGORY = (
-        int(os.environ.get("VIDEO_CATEGORY")) if os.environ.get("VIDEO_CATEGORY") else 0
-    )
+    VIDEO_CATEGORY = int(os.environ.get("VIDEO_CATEGORY", "0") or 0)
 
     VIDEO_TITLE_PREFIX = os.environ.get("VIDEO_TITLE_PREFIX", "")
 
     VIDEO_TITLE_SUFFIX = os.environ.get("VIDEO_TITLE_SUFFIX", "")
 
-    DEBUG = bool(os.environ.get("DEBUG"))
+    DEBUG = os.environ.get("DEBUG", "").lower() in ("1", "true", "yes", "on")
 
-    UPLOAD_MODE = os.environ.get("UPLOAD_MODE") or False
-    if UPLOAD_MODE:
-        if UPLOAD_MODE.lower() in ["private", "public", "unlisted"]:
-            UPLOAD_MODE = UPLOAD_MODE.lower()
-        else:
-            UPLOAD_MODE = False
+    UPLOAD_MODE = os.environ.get("UPLOAD_MODE", "").lower()
+    if UPLOAD_MODE not in ("", "private", "public", "unlisted"):
+        UPLOAD_MODE = ""
 
     CRED_FILE = "auth_token.txt"

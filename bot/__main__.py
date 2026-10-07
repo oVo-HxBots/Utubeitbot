@@ -1,13 +1,17 @@
 import logging
 
-from .utubebot import UtubeBot
 from .config import Config
+from .utubebot import UtubeBot
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG if Config.DEBUG else logging.INFO)
+    logging.basicConfig(
+        level=logging.DEBUG if Config.DEBUG else logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+    )
     logging.getLogger("pyrogram").setLevel(
-        logging.INFO if Config.DEBUG else logging.WARNING
+        logging.DEBUG if Config.DEBUG else logging.WARNING
     )
 
-    UtubeBot().run()
+    app = UtubeBot()
+    app.run()

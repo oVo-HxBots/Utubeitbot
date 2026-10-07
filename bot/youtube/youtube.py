@@ -1,18 +1,18 @@
-import time
-import random
 import logging
-from httplib2 import HttpLib2Error
+import random
+import time
 from http.client import (
-    NotConnected,
+    BadStatusLine,
+    CannotSendHeader,
+    CannotSendRequest,
     IncompleteRead,
     ImproperConnectionState,
-    CannotSendRequest,
-    CannotSendHeader,
+    NotConnected,
     ResponseNotReady,
-    BadStatusLine,
 )
 
-from apiclient import http, errors, discovery
+from googleapiclient import discovery, errors, http
+from httplib2 import HttpLib2Error
 
 
 log = logging.getLogger(__name__)
@@ -27,7 +27,6 @@ class UploadFailed(Exception):
 
 
 class YouTube:
-
     MAX_RETRIES = 10
 
     RETRIABLE_EXCEPTIONS = (
