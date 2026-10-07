@@ -20,7 +20,7 @@ pyasn1==0.6.1
 pyasn1-modules==0.4.2
 pyparsing==3.3.3
 Pyrogram==2.0.106
-PySocks==1.9.4
+PySocks==1.7.1
 requests==2.32.3
 requests-oauthlib==2.0.0
 rsa==4.9
