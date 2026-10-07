@@ -63,7 +63,7 @@ class GoogleAuth:
                 },
                 scopes=self.OAUTH_SCOPE,
             )
-            self.credentials = flow.fetch_token(code=code)
+            self.credentials = flow.fetch_token(code=code, redirect_uri=self.REDIRECT_URI)
         except Exception:
             raise
 
