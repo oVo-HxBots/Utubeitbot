@@ -3,6 +3,7 @@ from urllib.parse import parse_qs, urlparse
 
 from pyrogram import filters as Filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.enums import ChatAction
 
 from ..youtube import GoogleAuth
 from ..config import Config
