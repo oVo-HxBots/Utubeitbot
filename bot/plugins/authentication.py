@@ -1,11 +1,8 @@
+import logging
+from urllib.parse import parse_qs, urlparse
+
 from pyrogram import filters as Filters
-from pyrogram.types import (
-    InlineKeyboardMarkup,
-    InlineKeyboardButton,
-    Message,
-    CallbackQuery,
-)
-from pyrogram.enums import ChatAction
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 from ..youtube import GoogleAuth
 from ..config import Config
@@ -13,56 +10,7 @@ from ..translations import Messages as tr
 from ..utubebot import UtubeBot
 
 
-def map_btns(pos):
-    if pos == 1:
-        button = [[InlineKeyboardButton(text="-->", callback_data="help+2")]]
-    elif pos == len(tr.HELP_MSG) - 1:
-        auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
-        url = auth.GetAuthUrl()
-        button = [
-            [InlineKeyboardButton(text="<--", callback_data=f"help+{pos-1}")],
-            [InlineKeyboardButton(text="Login URL", url=url)],
-        ]
-    else:
-        button = [
-            [
-                InlineKeyboardButton(text="<--", callback_data=f"help+{pos-1}"),
-                InlineKeyboardButton(text="-->", callback_data=f"help+{pos+1}"),
-            ],
-        ]
-    return button
-
-
-@UtubeBot.on_message(
-    Filters.private
-    & Filters.incoming
-    & Filters.command("help")
-    & Filters.user(Config.AUTH_USERS)
-)
-async def _help(c: UtubeBot, m: Message):
-    await m.reply_chat_action(ChatAction.TYPING)
-    await m.reply_text(
-        text=tr.HELP_MSG[1],
-        reply_markup=InlineKeyboardMarkup(map_btns(1)),
-    )
-
-
-help_callback_filter = Filters.create(
-    lambda _, __, query: query.data.startswith("help+")
-)
-
-
-@UtubeBot.on_callback_query(help_callback_filter)
-async def help_answer(c: UtubeBot, q: CallbackQuery):
-    pos = int(q.data.split("+")[1])
-    await q.answer()
-    await q.edit_message_text(
-        text=tr.HELP_MSG[pos], reply_markup=InlineKeyboardMarkup(map_btns(pos))
-    )
-
-
-auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
-url = auth.GetAuthUrl()
+log = logging.getLogger(__name__)
 
 
 @UtubeBot.on_message(
@@ -71,27 +19,96 @@ url = auth.GetAuthUrl()
     & Filters.command("login")
     & Filters.user(Config.AUTH_USERS)
 )
-async def _login(c: UtubeBot, m: Message):
+async def _login(c: UtubeBot, m: Message) -> None:
     await m.reply_chat_action(ChatAction.TYPING)
-    await m.reply_text(
-        text=tr.LOGIN_MSG,
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Authentication URL", url=url)]]
-        ),
-    )
+    try:
+        auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
+        url = auth.GetAuthUrl()
+        
+        # Send auth URL as plain text (not in button) because it's too long
+        await m.reply_text(
+            text=f"Click the link below to authorize:\n\n{url}\n\nAfter authorizing, copy the authorization code and send it back using:\n/authorise <your_code>",
+            disable_web_page_preview=False,
+            quote=True,
+        )
+    except Exception as e:
+        log.error(e, exc_info=True)
+        await m.reply_text(f"❌ Error getting auth URL: {e}", True)
 
 
 @UtubeBot.on_message(
     Filters.private
     & Filters.incoming
-    & Filters.command("upgrade")
+    & Filters.command("authorise")
+    & Filters.user(Config.AUTH_USERS)
 )
-async def _upgrade(c: UtubeBot, m: Message):
-    await m.reply_chat_action(ChatAction.TYPING)
-    await m.reply_text(
-        text=tr.UPGRADE_MSG,
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Subscription Details", url="https://t.me/+97tA4_TrzyowMjk1")]]
-        ),
-    )
+async def _auth(c: UtubeBot, m: Message) -> None:
+    if len(m.command) == 1:
+        await m.reply_text(
+            "Usage: /authorise <authorization_code>\n\nGet the code from: /login",
+            True,
+        )
+        return
+
+    code = m.command[1]
+    
+    # Extract code from full URL if provided
+    if "http" in code.lower():
+        try:
+            parsed = urlparse(code)
+            params = parse_qs(parsed.query)
+            code = params.get("code", [None])[0]
+        except Exception as e:
+            log.error(f"Error parsing URL: {e}")
+    
+    if not code:
+        await m.reply_text("❌ No valid authorization code found.", True)
+        return
+
+    try:
+        await m.reply_chat_action(ChatAction.TYPING)
+        auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
+        auth.Auth(code)
+        auth.SaveCredentialsFile(Config.CRED_FILE)
+
+        msg = await m.reply_text("✅ " + tr.AUTH_SUCCESS_MSG, True)
+
+        with open(Config.CRED_FILE, "r", encoding="utf-8") as f:
+            cred_data = f.read()
+
+        log.debug(f"Authentication success, auth data saved to {Config.CRED_FILE}")
+
+        msg2 = await msg.reply_text(cred_data, parse_mode=None)
+        await msg2.reply_text(
+            "This is your authorization data! Save it for backup. Use /save_auth_data to restore later.",
+            True,
+        )
+
+    except Exception as e:
+        log.error(e, exc_info=True)
+        await m.reply_text(f"❌ {tr.AUTH_FAILED_MSG.format(e)}", True)
+
+
+@UtubeBot.on_message(
+    Filters.private
+    & Filters.incoming
+    & Filters.command("save_auth_data")
+    & Filters.reply
+    & Filters.user(Config.AUTH_USERS)
+)
+async def _save_auth_data(c: UtubeBot, m: Message) -> None:
+    auth_data = m.reply_to_message.text
+    try:
+        await m.reply_chat_action(ChatAction.TYPING)
+        with open(Config.CRED_FILE, "w", encoding="utf-8") as f:
+            f.write(auth_data)
+
+        auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
+        auth.LoadCredentialsFile(Config.CRED_FILE)
+        auth.authorize()
+
+        await m.reply_text("✅ " + tr.AUTH_DATA_SAVE_SUCCESS, True)
+        log.debug(f"Authentication success, auth data saved to {Config.CRED_FILE}")
+    except Exception as e:
+        log.error(e, exc_info=True)
+        await m.reply_text(f"❌ Error: {e}", True)
