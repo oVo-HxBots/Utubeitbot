@@ -1,15 +1,12 @@
 import logging
-from urllib.parse import parse_qs, urlparse
 
 from pyrogram import filters as Filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.enums import ChatAction
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from ..youtube import GoogleAuth
 from ..config import Config
-from ..translations import Messages as tr
 from ..utubebot import UtubeBot
-
+from ..youtube import GoogleAuth
 
 log = logging.getLogger(__name__)
 
@@ -22,19 +19,29 @@ log = logging.getLogger(__name__)
 )
 async def _login(c: UtubeBot, m: Message) -> None:
     await m.reply_chat_action(ChatAction.TYPING)
+
     try:
-        auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
-        url = auth.GetAuthUrl()
-        
-        # Send auth URL as plain text (not in button) because it's too long
-        await m.reply_text(
-            text=f"Click the link below to authorize:\n\n{url}\n\nAfter authorizing, copy the authorization code and send it back using:\n/authorise <your_code>",
-            disable_web_page_preview=False,
-            quote=True,
+        auth = GoogleAuth(
+            Config.CLIENT_ID,
+            Config.CLIENT_SECRET,
+            Config.OAUTH_REDIRECT_URI,
         )
-    except Exception as e:
-        log.error(e, exc_info=True)
-        await m.reply_text(f"❌ Error getting auth URL: {e}", True)
+        url = auth.GetAuthUrl(m.from_user.id)
+
+        await m.reply_text(
+            "🔐 <b>Connect your YouTube channel</b>\n\n"
+            "Open the button below and sign in to the Google account that owns "
+            "your YouTube channel.\n\n"
+            "After Google finishes authorization, it will redirect back "
+            "automatically and the bot will confirm the connection.",
+            quote=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("🔗 Authorize YouTube", url=url)]]
+            ),
+        )
+    except Exception as exc:
+        log.error("Unable to start Google OAuth", exc_info=True)
+        await m.reply_text(f"❌ Error starting YouTube authorization: {exc}", True)
 
 
 @UtubeBot.on_message(
@@ -44,72 +51,55 @@ async def _login(c: UtubeBot, m: Message) -> None:
     & Filters.user(Config.AUTH_USERS)
 )
 async def _auth(c: UtubeBot, m: Message) -> None:
-    if len(m.command) == 1:
-        await m.reply_text(
-            "Usage: /authorise <authorization_code>\n\nGet the code from: /login",
-            True,
-        )
-        return
-
-    code = m.command[1]
-    
-    # Extract code from full URL if provided
-    if "http" in code.lower():
-        try:
-            parsed = urlparse(code)
-            params = parse_qs(parsed.query)
-            code = params.get("code", [None])[0]
-        except Exception as e:
-            log.error(f"Error parsing URL: {e}")
-    
-    if not code:
-        await m.reply_text("❌ No valid authorization code found.", True)
-        return
-
-    try:
-        await m.reply_chat_action(ChatAction.TYPING)
-        auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
-        auth.Auth(code)
-        auth.SaveCredentialsFile(Config.CRED_FILE)
-
-        msg = await m.reply_text("✅ " + tr.AUTH_SUCCESS_MSG, True)
-
-        with open(Config.CRED_FILE, "r", encoding="utf-8") as f:
-            cred_data = f.read()
-
-        log.debug(f"Authentication success, auth data saved to {Config.CRED_FILE}")
-
-        msg2 = await msg.reply_text(cred_data, parse_mode=None)
-        await msg2.reply_text(
-            "This is your authorization data! Save it for backup. Use /save_auth_data to restore later.",
-            True,
-        )
-
-    except Exception as e:
-        log.error(e, exc_info=True)
-        await m.reply_text(f"❌ {tr.AUTH_FAILED_MSG.format(e)}", True)
+    await m.reply_text(
+        "ℹ️ Authorization codes are no longer copied through Telegram. "
+        "Use /login and complete the Google authorization in your browser.",
+        True,
+    )
 
 
 @UtubeBot.on_message(
     Filters.private
     & Filters.incoming
     & Filters.command("save_auth_data")
-    & Filters.reply
     & Filters.user(Config.AUTH_USERS)
 )
 async def _save_auth_data(c: UtubeBot, m: Message) -> None:
-    auth_data = m.reply_to_message.text
+    await m.reply_text(
+        "For security, OAuth refresh tokens are no longer sent through Telegram. "
+        "Use /login to connect or reconnect your YouTube account.",
+        True,
+    )
+
+
+async def handle_oauth_callback(bot: UtubeBot, code: str, state: str) -> None:
+    user_id, credentials = GoogleAuth.complete_callback(code, state)
+
+    auth = GoogleAuth(
+        Config.CLIENT_ID,
+        Config.CLIENT_SECRET,
+        Config.OAUTH_REDIRECT_URI,
+    )
+    auth.credentials = credentials
+
+    cred_file = Config.credential_file(user_id)
+    auth.SaveCredentialsFile(str(cred_file))
+
     try:
-        await m.reply_chat_action(ChatAction.TYPING)
-        with open(Config.CRED_FILE, "w", encoding="utf-8") as f:
-            f.write(auth_data)
+        await bot.send_message(
+            user_id,
+            "✅ <b>YouTube authorization successful!</b>\n\n"
+            "Your YouTube account is now connected. You can now reply to a "
+            "Telegram video and use /upload.",
+        )
+    except Exception:
+        log.warning(
+            "Could not notify Telegram user %s",
+            user_id,
+            exc_info=True,
+        )
 
-        auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
-        auth.LoadCredentialsFile(Config.CRED_FILE)
-        auth.authorize()
-
-        await m.reply_text("✅ " + tr.AUTH_DATA_SAVE_SUCCESS, True)
-        log.debug(f"Authentication success, auth data saved to {Config.CRED_FILE}")
-    except Exception as e:
-        log.error(e, exc_info=True)
-        await m.reply_text(f"❌ Error: {e}", True)
+    log.info(
+        "YouTube OAuth authorization completed for Telegram user %s",
+        user_id,
+    )
