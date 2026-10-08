@@ -77,7 +77,7 @@ async def _upload(c: UtubeBot, m: Message):
 
         if not status:
             c.counter = max(0, c.counter - 1)
-            await snt.edit_text(text=file, parse_mode="markdown")
+            await snt.edit_text(text=file)
             return
 
         try:
@@ -95,7 +95,7 @@ async def _upload(c: UtubeBot, m: Message):
         if not status:
             c.counter = max(0, c.counter - 1)
 
-        await snt.edit_text(text=link, parse_mode="markdown")
+        await snt.edit_text(text=link)
     finally:
         c.download_controller.pop(download_id, None)
         if "file" in locals() and file and os.path.isfile(file):
