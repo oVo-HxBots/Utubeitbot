@@ -69,6 +69,6 @@ async def _upgrade(c: UtubeBot, m: Message):
         text=tr.UPGRADE_MSG,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Subscribe Here", url="https://t.me/HxSupport")]]
+            [[InlineKeyboardButton(text="Subscribe Here", url="https://github.com/oVo-HxBots")]]
         ),
     )
